@@ -25,14 +25,14 @@ const CodeEditor: React.FC = () => {
         <div className="space-y-2 font-mono text-sm p-4 text-left">
           <div className="flex">
             <span className="text-neutral-600 w-8 select-none">01</span>
-            <span className="text-violet-400">import</span> <span className="text-white">Future</span> <span className="text-violet-400">from</span> <span className="text-pink-400">'@siteberry/core'</span>;
+            <span className="text-violet-400">import</span> <span className="text-white">Future</span> <span className="text-violet-400">from</span> <span className="text-blue-400">'@siteberry/core'</span>;
           </div>
           <div className="flex">
             <span className="text-neutral-600 w-8 select-none">02</span>
           </div>
           <div className="flex">
             <span className="text-neutral-600 w-8 select-none">03</span>
-            <span className="text-violet-400">const</span> <span className="text-blue-400">Project</span> <span className="text-white">=</span> <span className="text-pink-400">async</span> () <span className="text-violet-400">=&gt;</span> {'{'}
+            <span className="text-violet-400">const</span> <span className="text-blue-400">Project</span> <span className="text-white">=</span> <span className="text-blue-400">async</span> () <span className="text-violet-400">=&gt;</span> {'{'}
           </div>
           <div className="flex">
             <span className="text-neutral-600 w-8 select-none">04</span>
