@@ -32,24 +32,6 @@ const Works: React.FC = () => {
       description: 'Description of project 3',
       url: 'https://example.com',
       tech: 'Vue.js, Node.js'
-    },
-    {
-      title: 'Project 4',
-      description: 'Description of project 4',
-      url: 'https://example.com',
-      tech: 'React, GraphQL'
-    },
-    {
-      title: 'Project 5',
-      description: 'Description of project 5',
-      url: 'https://example.com',
-      tech: 'Angular, Firebase'
-    },
-    {
-      title: 'Project 6',
-      description: 'Description of project 6',
-      url: 'https://example.com',
-      tech: 'Svelte, MongoDB'
     }
   ];
 
@@ -67,47 +49,78 @@ const Works: React.FC = () => {
            </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {works.map((work, index) => (
-            <a
-              key={index}
-              href={work.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block h-full"
-            >
-              <TerminalBox 
-                title={`project_${index + 1}.js`}
-                className="hover:translate-y-[-4px] transition-transform h-full group cursor-pointer"
-                borderColor={index === 1 ? 'green' : 'gray'}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Left column - Project cards */}
+          <div className="space-y-6">
+            {works.map((work, index) => (
+              <a
+                key={index}
+                href={work.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 group-hover:border-cyber-green transition-colors">
-                    <Globe className="w-6 h-6 text-cyber-green" />
+                <TerminalBox 
+                  title={`project_${index + 1}.js`}
+                  className="hover:translate-y-[-4px] transition-transform group cursor-pointer"
+                  borderColor={index === 1 ? 'green' : 'gray'}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="p-3 bg-neutral-900 border border-neutral-800 group-hover:border-cyber-green transition-colors">
+                      <Globe className="w-6 h-6 text-cyber-green" />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <ExternalLink className="w-4 h-4 text-neutral-600 group-hover:text-cyber-green transition-colors" />
+                      <div className="text-xs text-neutral-600 font-mono">v1.0.0</div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <ExternalLink className="w-4 h-4 text-neutral-600 group-hover:text-cyber-green transition-colors" />
-                    <div className="text-xs text-neutral-600 font-mono">v1.0.0</div>
+                  <h3 className="text-xl text-white font-bold font-mono mb-3 group-hover:text-cyber-green transition-colors">
+                    <DecodingText 
+                      text={work.title} 
+                      triggerOnHover={true} 
+                      scrambleClassName="text-cyber-accent"
+                    />
+                  </h3>
+                  <div className="pt-4 border-t border-neutral-800">
+                    <code className="text-xs text-blue-400 bg-black/10 px-2 py-1 block w-fit font-mono">
+                      &gt; {work.tech}
+                    </code>
                   </div>
+                </TerminalBox>
+              </a>
+            ))}
+          </div>
+
+          {/* Right column - Descriptions */}
+          <div className="space-y-6 lg:sticky lg:top-24">
+            {works.map((work, index) => (
+              <div 
+                key={index}
+                className="p-6 bg-cyber-black/50 border border-neutral-800 hover:border-cyber-green/50 transition-colors"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs text-neutral-500 font-mono">#{index + 1}</span>
+                  <h3 className="text-lg text-white font-bold font-mono">
+                    {work.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl text-white font-bold font-mono mb-3 group-hover:text-cyber-green transition-colors">
-                  <DecodingText 
-                    text={work.title} 
-                    triggerOnHover={true} 
-                    scrambleClassName="text-cyber-accent"
-                  />
-                </h3>
-                <p className="text-neutral-400 text-sm mb-6 leading-relaxed">
+                <p className="text-neutral-400 text-sm leading-relaxed mb-4">
                   {work.description}
                 </p>
-                <div className="pt-4 border-t border-neutral-800">
-                  <code className="text-xs text-blue-400 bg-black/10 px-2 py-1 block w-fit font-mono">
-                    &gt; {work.tech}
-                  </code>
+                <div className="flex items-center gap-2 text-xs text-neutral-500 font-mono">
+                  <span className="text-cyber-green">→</span>
+                  <a 
+                    href={work.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-cyber-green transition-colors"
+                  >
+                    {work.url}
+                  </a>
                 </div>
-              </TerminalBox>
-            </a>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
