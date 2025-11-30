@@ -141,15 +141,16 @@ const DigitalNeuralSphere: React.FC<Props> = ({
       // Clear canvas
       ctx.clearRect(0, 0, width, height);
 
-      // Update rotation based on mouse
-      targetRotationY = (mouseX - width / 2) * 0.0005;
-      targetRotationX = (mouseY - height / 2) * 0.0005;
+      // Update rotation based on mouse (optional, can be disabled)
+      targetRotationY = (mouseX - width / 2) * 0.0003;
+      targetRotationX = (mouseY - height / 2) * 0.0003;
 
-      rotationY += (targetRotationY - rotationY) * 0.05;
-      rotationX += (targetRotationX - rotationX) * 0.05;
+      rotationY += (targetRotationY - rotationY) * 0.03;
+      rotationX += (targetRotationX - rotationX) * 0.03;
 
-      // Auto rotation
-      rotationY += speed * 0.01;
+      // Auto rotation - continuous spinning
+      rotationY += speed * 0.02;
+      rotationX += speed * 0.015;
 
       // Update node positions
       const cosY = Math.cos(rotationY);
