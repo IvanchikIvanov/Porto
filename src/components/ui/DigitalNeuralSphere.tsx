@@ -45,7 +45,7 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     let height = canvas.offsetHeight || 600;
 
     // Config
-    const sphereRadius = Math.min(width, height) * 0.35;
+    const sphereRadius = Math.min(width, height) * 0.7;
     const nodes: Node[] = [];
     let pulses: Pulse[] = [];
 
@@ -61,9 +61,7 @@ const DigitalNeuralSphere: React.FC<Props> = ({
 
     // Color scheme from site theme
     // Primary (cyber-green): #7c3aed (violet)
-    // Accent: #db2777 (pink)
     const primaryColor = { r: 124, g: 58, b: 237 }; // cyber-green/violet
-    const accentColor = { r: 219, g: 39, b: 119 }; // cyber-accent/pink
 
     // Helper: Generate points on a sphere (Fibonacci Sphere algorithm for even distribution)
     const initNodes = () => {
@@ -238,15 +236,6 @@ const DigitalNeuralSphere: React.FC<Props> = ({
         ctx.beginPath();
         ctx.arc(node.px!, node.py!, size, 0, Math.PI * 2);
         ctx.fill();
-
-        // Accent markers for some nodes
-        if (node.id % 5 === 0) {
-           ctx.strokeStyle = `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${alpha * 0.8})`;
-           ctx.lineWidth = 1;
-           ctx.beginPath();
-           ctx.rect(node.px! - size * 2, node.py! - size * 2, size * 4, size * 4);
-           ctx.stroke();
-        }
       });
 
       animationFrameId = requestAnimationFrame(animate);
