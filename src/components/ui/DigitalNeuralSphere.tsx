@@ -45,7 +45,7 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     let height = canvas.offsetHeight || 600;
 
     // Config
-    const sphereRadius = Math.min(width, height) * 0.7;
+    const sphereRadius = Math.min(width, height) * 0.49;
     const nodes: Node[] = [];
     let pulses: Pulse[] = [];
 
