@@ -59,9 +59,9 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     let targetRotationX = 0;
     let targetRotationY = 0;
 
-    // Color scheme from site theme
-    // Primary (cyber-green): #7c3aed (violet)
-    const primaryColor = { r: 124, g: 58, b: 237 }; // cyber-green/violet
+    // Color scheme: Purple to Blue gradient (more purple)
+    const primaryColor = { r: 147, g: 51, b: 234 }; // Deep Purple (#9333ea)
+    const accentColor = { r: 59, g: 130, b: 246 }; // Deep Blue (#3b82f6)
 
     // Helper: Generate points on a sphere (Fibonacci Sphere algorithm for even distribution)
     const initNodes = () => {
@@ -182,8 +182,11 @@ const DigitalNeuralSphere: React.FC<Props> = ({
           if (node.id < target.id) {
              const distAlpha = Math.max(0, (alpha + ((target.z + sphereRadius) / (2 * sphereRadius))) / 2);
 
-             // Use primary color (violet) for connections
-             ctx.strokeStyle = `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${distAlpha * 0.15})`;
+             // Gradient from purple to blue for connections
+             const gradient = ctx.createLinearGradient(node.px!, node.py!, target.px!, target.py!);
+             gradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${distAlpha * 0.15})`);
+             gradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${distAlpha * 0.15})`);
+             ctx.strokeStyle = gradient;
              ctx.beginPath();
              ctx.moveTo(node.px!, node.py!);
              ctx.lineTo(target.px!, target.py!);
@@ -218,8 +221,11 @@ const DigitalNeuralSphere: React.FC<Props> = ({
         ctx.arc(curX, curY, 2 * scale, 0, Math.PI * 2);
         ctx.fill();
 
-        // Glow effect with primary color
-        ctx.fillStyle = `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha * 0.5})`;
+        // Glow effect with gradient (purple to blue)
+        const glowGradient = ctx.createRadialGradient(curX, curY, 0, curX, curY, 6 * scale);
+        glowGradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha * 0.5})`);
+        glowGradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${alpha * 0.2})`);
+        ctx.fillStyle = glowGradient;
         ctx.beginPath();
         ctx.arc(curX, curY, 6 * scale, 0, Math.PI * 2);
         ctx.fill();
@@ -231,8 +237,13 @@ const DigitalNeuralSphere: React.FC<Props> = ({
         if (alpha <= 0.1) return;
         const size = 2 * node.scale!;
 
-        // Node fill with primary color
-        ctx.fillStyle = `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha})`;
+        // Node fill with gradient (more purple, transitioning to blue)
+        const nodeGradient = ctx.createRadialGradient(node.px!, node.py!, 0, node.px!, node.py!, size * 2);
+        const purpleRatio = 0.7; // 70% purple, 30% blue
+        nodeGradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha})`);
+        nodeGradient.addColorStop(purpleRatio, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha * 0.8})`);
+        nodeGradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${alpha * 0.6})`);
+        ctx.fillStyle = nodeGradient;
         ctx.beginPath();
         ctx.arc(node.px!, node.py!, size, 0, Math.PI * 2);
         ctx.fill();

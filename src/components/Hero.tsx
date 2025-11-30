@@ -9,10 +9,11 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Background Matrix-lite effect */}
+      {/* Background gradient effect */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-cyber-green/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-900/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-[#9333ea]/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#3b82f6]/20 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#9333ea]/5 via-transparent to-[#3b82f6]/5"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

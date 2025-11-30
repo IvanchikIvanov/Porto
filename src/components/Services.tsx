@@ -85,7 +85,7 @@ const Services: React.FC = () => {
                 {service.desc}
               </p>
               <div className="pt-4 border-t border-neutral-800">
-                <code className="text-xs text-pink-400 bg-black/10 px-2 py-1 block w-fit font-mono">
+                <code className="text-xs text-blue-400 bg-black/10 px-2 py-1 block w-fit font-mono">
                   &gt; {service.cmd}
                 </code>
               </div>

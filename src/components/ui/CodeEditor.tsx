@@ -12,7 +12,7 @@ const CodeEditor: React.FC = () => {
       transition={{ duration: 0.5 }}
       className="relative"
     >
-      <div className="absolute -inset-1 bg-gradient-to-r from-cyber-green to-pink-600 opacity-30 blur"></div>
+      <div className="absolute -inset-1 bg-gradient-to-r from-[#9333ea] to-[#3b82f6] opacity-30 blur"></div>
       <div className="relative bg-cyber-black border border-neutral-800 p-2 shadow-2xl">
         <div className="flex items-center justify-between px-2 pb-2 border-b border-neutral-800 mb-2 bg-neutral-900/50">
            <div className="text-xs text-neutral-500">main.tsx</div>
@@ -44,11 +44,11 @@ const CodeEditor: React.FC = () => {
           </div>
           <div className="flex">
             <span className="text-neutral-600 w-8 select-none">06</span>
-            <span className="ml-8 text-white">speed:</span> <span className="text-pink-400">'MAX_VELOCITY'</span>,
+            <span className="ml-8 text-white">speed:</span> <span className="text-blue-400">'MAX_VELOCITY'</span>,
           </div>
           <div className="flex">
             <span className="text-neutral-600 w-8 select-none">07</span>
-            <span className="ml-8 text-white">style:</span> <span className="text-pink-400">'CYBERPUNK'</span>
+            <span className="ml-8 text-white">style:</span> <span className="text-blue-400">'CYBERPUNK'</span>
           </div>
           <div className="flex">
             <span className="text-neutral-600 w-8 select-none">08</span>
