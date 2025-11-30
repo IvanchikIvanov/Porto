@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siteberry.pro // DIGITAL_PRODUCTION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        /* Dark Theme (Default) */
+        --bg-main: #050505;
+        --bg-panel: #111111;
+        --bg-panel-transparent: rgba(17, 17, 17, 0.8);
+        --text-main: #e0e0e0;
+        --text-inverse: #000000;
+        --text-muted: #a3a3a3;
+        --border-color: #262626;
+        --primary: #7c3aed; /* Violet */
+        --primary-dim: rgba(124, 58, 237, 0.1);
+        --accent: #db2777; /* Pink */
+        --scanline-color: rgba(0,0,0,0.2);
+        --btn-hover: rgba(255,255,255,0.1);
+      }
+      
+      :root.light-theme {
+        /* Pastel Light Theme (Soft on eyes) */
+        --bg-main: #fdfbf7; /* Cream/Pastel Paper */
+        --bg-panel: #ffffff;
+        --bg-panel-transparent: rgba(255, 255, 255, 0.8);
+        --text-main: #2d2a2e; /* Soft Dark Grey */
+        --text-inverse: #ffffff;
+        --text-muted: #6b7280;
+        --border-color: #e5e7eb;
+        --primary: #8b5cf6; /* Pastel Violet */
+        --primary-dim: rgba(139, 92, 246, 0.1);
+        --accent: #ec4899; /* Pastel Pink */
+        --scanline-color: rgba(0,0,0,0.02);
+        --btn-hover: rgba(0,0,0,0.05);
+      }
+    
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        transition: background-color 0.3s ease, color 0.3s ease;
+        overflow-x: hidden;
+      }
+      
+      .scanlines {
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0) 50%,
+          var(--scanline-color) 50%,
+          var(--scanline-color)
+        );
+        background-size: 100% 4px;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.6;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        background: var(--bg-panel);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 0;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ['"Space Mono"', 'monospace'],
+            },
+            colors: {
+              // Mapping Tailwind classes to CSS variables for theming
+              'cyber-black': 'var(--bg-main)',
+              'cyber-gray': 'var(--bg-panel)',
+              'cyber-green': 'var(--primary)', 
+              'cyber-green-dim': 'var(--primary-dim)',
+              'cyber-accent': 'var(--accent)',
+              
+              // Dynamic colors
+              white: 'var(--text-main)', // "White" text becomes dark in light mode
+              black: 'var(--text-inverse)', // "Black" text becomes white in light mode
+              
+              neutral: {
+                900: 'var(--bg-panel)', 
+                800: 'var(--border-color)',
+                600: 'var(--text-muted)',
+                500: 'var(--text-muted)',
+                400: 'var(--text-muted)',
+                300: 'var(--text-main)',
+              }
+            },
+            animation: {
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'glitch': 'glitch 1s linear infinite',
+            },
+            keyframes: {
+              glitch: {
+                '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                '62%': { transform: 'translate(0,0) skew(5deg)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
