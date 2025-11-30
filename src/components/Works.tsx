@@ -16,10 +16,10 @@ const Works: React.FC = () => {
 
   const works: Work[] = [
     {
-      title: 'Project 1',
-      description: 'Description of project 1',
-      url: 'https://example.com',
-      tech: 'React, TypeScript'
+      title: 'Geo Transport',
+      description: 'Агрегатор транспортной логистики. Платформа для поиска и заказа грузоперевозок с интеграцией карт, системой отзывов и автоматическим подбором оптимальных маршрутов.',
+      url: 'https://geo-transport.ru/',
+      tech: 'React, TypeScript, Node.js'
     },
     {
       title: 'Project 2',
