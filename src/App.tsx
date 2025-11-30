@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Works from './components/Works';
 import ProjectLog from './components/ProjectLog';
 import ContactFooter from './components/ContactFooter';
 
@@ -16,6 +17,7 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <Works />
         <ProjectLog />
       </main>
 

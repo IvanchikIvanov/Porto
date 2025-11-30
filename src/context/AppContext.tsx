@@ -47,6 +47,9 @@ const translations = {
     'services.smart': 'SMART_CONTRACTS',
     'services.smart_desc': 'Web3 development, tokenomics, and secure blockchain integration on ETH/SOL.',
 
+    'works.header_cmd': 'ls -la ./works',
+    'works.header_desc': 'Displaying completed projects... All deployments successful. Click to visit live sites.',
+
     'portfolio.header': 'EXECUTION_LOGS',
     'portfolio.sub': 'Displaying recent successful deployments',
     'portfolio.live': 'LIVE_FEED',
@@ -106,6 +109,9 @@ const translations = {
     'services.game_desc': 'Браузерные игры и интерактивные возможности для вовлечения вашей аудитории.',
     'services.smart': 'СМАРТ_КОНТРАКТЫ',
     'services.smart_desc': 'Web3 разработка, токеномика и безопасная интеграция блокчейна на ETH/SOL.',
+
+    'works.header_cmd': 'ls -la ./работы',
+    'works.header_desc': 'Отображение завершенных проектов... Все деплои успешны. Нажмите для перехода на сайты.',
 
     'portfolio.header': 'ЖУРНАЛ_ИСПОЛНЕНИЯ',
     'portfolio.sub': 'Отображение последних успешных развертываний',
