@@ -92,11 +92,12 @@ const Works: React.FC = () => {
           </div>
 
           {/* Right column - Descriptions */}
-          <div className="space-y-6 lg:sticky lg:top-24">
+          <div className="space-y-6">
             {works.map((work, index) => (
               <div 
                 key={index}
-                className="p-6 bg-cyber-black/50 border border-neutral-800 hover:border-cyber-green/50 transition-colors"
+                className="flex flex-col justify-start"
+                style={{ minHeight: '200px' }}
               >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs text-neutral-500 font-mono">#{index + 1}</span>
@@ -104,7 +105,7 @@ const Works: React.FC = () => {
                     {work.title}
                   </h3>
                 </div>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+                <p className="text-neutral-400 text-sm leading-relaxed mb-4 font-mono">
                   {work.description}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-neutral-500 font-mono">
