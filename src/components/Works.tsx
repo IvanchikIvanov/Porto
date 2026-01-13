@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TerminalBox from './ui/TerminalBox';
 import DecodingText from './ui/DecodingText';
-import { ExternalLink, Globe } from 'lucide-react';
+import CaseStudyModal from './ui/CaseStudyModal';
+import { ExternalLink, Globe, Eye } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { motion } from 'framer-motion';
 
 interface Work {
   title: string;
   description: string;
   url: string;
   tech: string;
+  challenge?: string;
+  solution?: string;
 }
 
 const Works: React.FC = () => {
   const { t } = useApp();
+  const [selectedProject, setSelectedProject] = useState<Work | null>(null);
 
   const works: Work[] = [
     {
       title: 'Geo Transport',
       description: 'Агрегатор транспортной логистики. Платформа для поиска и заказа грузоперевозок с интеграцией карт, системой отзывов и автоматическим подбором оптимальных маршрутов.',
       url: 'https://geo-transport.ru/',
-      tech: 'React, TypeScript, Node.js'
+      tech: 'React, TypeScript, Node.js',
+      challenge: 'Creating a real-time tracking system for thousands of shipments while maintaining high performance on mobile devices for drivers.',
+      solution: 'Implemented WebSocket connections for live updates and optimized map rendering using WebGL.'
     },
     {
       title: 'Project 2',
       description: 'Description of project 2',
       url: 'https://example.com',
-      tech: 'Next.js, Tailwind'
+      tech: 'Next.js, Tailwind',
+      challenge: 'Building a highly scalable e-commerce platform capable of handling flash sales.',
+      solution: 'Utilized static site generation (SSG) for product pages and detailed caching strategies.'
     },
     {
       title: 'Project 3',
@@ -38,93 +47,119 @@ const Works: React.FC = () => {
   return (
     <section id="works" className="py-24 bg-cyber-gray/30 relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="mb-16">
-           <h2 className="text-3xl font-bold text-white font-mono mb-4 flex items-center">
-             <span className="text-cyber-green mr-2">$</span>
-             <DecodingText text={t('works.header_cmd')} />
-           </h2>
-           <p className="text-neutral-400 font-mono max-w-2xl">
-             {t('works.header_desc')}
-           </p>
+          <h2 className="text-3xl font-bold text-white font-mono mb-4 flex items-center">
+            <span className="text-cyber-green mr-2">$</span>
+            <DecodingText text={t('works.header_cmd')} />
+          </h2>
+          <p className="text-neutral-400 font-mono max-w-2xl">
+            {t('works.header_desc')}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left column - Project cards */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             {works.map((work, index) => (
-              <a
+              <motion.div
                 key={index}
-                href={work.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
+                whileHover={{
+                  scale: 1.02,
+                  rotateX: 2,
+                  rotateY: 2,
+                  transition: { duration: 0.2 }
+                }}
+                className="perspective-1000"
+                onClick={() => setSelectedProject(work)}
               >
-                <TerminalBox 
-                  title={`project_${index + 1}.js`}
-                  className="hover:translate-y-[-4px] transition-transform group cursor-pointer"
-                  borderColor={index === 1 ? 'green' : 'gray'}
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 bg-neutral-900 border border-neutral-800 group-hover:border-cyber-green transition-colors">
-                      <Globe className="w-6 h-6 text-cyber-green" />
+                <div className="cursor-pointer">
+                  <TerminalBox
+                    title={`project_${index + 1}.js`}
+                    className="group shadow-2xl hover:shadow-cyber-green/20 transition-all border-neutral-800 hover:border-cyber-green/50"
+                    borderColor={index === 0 ? 'green' : 'gray'}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="p-3 bg-neutral-900 border border-neutral-800 group-hover:border-cyber-green transition-colors rounded">
+                        <Globe className="w-6 h-6 text-cyber-green" />
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1 text-xs text-neutral-500 bg-neutral-900 px-2 py-1 rounded border border-neutral-800 group-hover:text-white transition-colors">
+                          <Eye className="w-3 h-3" />
+                          <span>View Case</span>
+                        </div>
+                        <div className="text-xs text-neutral-600 font-mono">v1.0.0</div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <h3 className="text-xl text-white font-bold font-mono mb-3 group-hover:text-cyber-green transition-colors">
+                      <DecodingText
+                        text={work.title}
+                        triggerOnHover={true}
+                        scrambleClassName="text-cyber-accent"
+                      />
+                    </h3>
+                    <p className="text-neutral-400 text-sm mb-4 line-clamp-2">
+                      {work.description}
+                    </p>
+                    <div className="pt-4 border-t border-neutral-800 flex justify-between items-center">
+                      <code className="text-xs text-blue-400 bg-black/10 px-2 py-1 block w-fit font-mono">
+                        &gt; {work.tech}
+                      </code>
                       <ExternalLink className="w-4 h-4 text-neutral-600 group-hover:text-cyber-green transition-colors" />
-                      <div className="text-xs text-neutral-600 font-mono">v1.0.0</div>
                     </div>
-                  </div>
-                  <h3 className="text-xl text-white font-bold font-mono mb-3 group-hover:text-cyber-green transition-colors">
-                    <DecodingText 
-                      text={work.title} 
-                      triggerOnHover={true} 
-                      scrambleClassName="text-cyber-accent"
-                    />
-                  </h3>
-                  <div className="pt-4 border-t border-neutral-800">
-                    <code className="text-xs text-blue-400 bg-black/10 px-2 py-1 block w-fit font-mono">
-                      &gt; {work.tech}
-                    </code>
-                  </div>
-                </TerminalBox>
-              </a>
+                  </TerminalBox>
+                </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Right column - Descriptions */}
-          <div className="space-y-6">
-            {works.map((work, index) => (
-              <div 
-                key={index}
-                className="flex flex-col justify-start"
-                style={{ minHeight: '200px' }}
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs text-neutral-500 font-mono">#{index + 1}</span>
-                  <h3 className="text-lg text-white font-bold font-mono">
-                    {work.title}
-                  </h3>
+          {/* Right column - Descriptions & Context */}
+          <div className="space-y-12 sticky top-24">
+            <div className="bg-neutral-900/50 p-6 border border-neutral-800 rounded-lg backdrop-blur-sm">
+              <h3 className="text-white font-bold mb-4 font-mono flex items-center gap-2">
+                <span className="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></span>
+                SYSTEM_STATUS
+              </h3>
+              <div className="space-y-4 text-sm font-mono text-neutral-400">
+                <div className="flex justify-between border-b border-neutral-800 pb-2">
+                  <span>DEPLOYED_PROJECTS</span>
+                  <span className="text-white">3</span>
                 </div>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-4 font-mono">
-                  {work.description}
-                </p>
-                <div className="flex items-center gap-2 text-xs text-neutral-500 font-mono">
-                  <span className="text-cyber-green">→</span>
-                  <a 
-                    href={work.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-cyber-green transition-colors"
-                  >
-                    {work.url}
-                  </a>
+                <div className="flex justify-between border-b border-neutral-800 pb-2">
+                  <span>AVG_PERFORMANCE</span>
+                  <span className="text-green-400">98/100</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>LAST_COMMIT</span>
+                  <span className="text-white">TODAY</span>
                 </div>
               </div>
-            ))}
+            </div>
+
+            <div className="hidden lg:block">
+              <h3 className="text-neutral-500 font-mono text-sm mb-4 uppercase tracking-wider">Project Timeline</h3>
+              <div className="border-l-2 border-neutral-800 pl-6 space-y-8">
+                {works.map((work, index) => (
+                  <div key={index} className="relative">
+                    <div className={`absolute -left-[29px] top-1 w-3 h-3 rounded-full border-2 ${index === 0 ? 'bg-cyber-green border-cyber-green' : 'bg-neutral-900 border-neutral-700'}`}></div>
+                    <div className="text-sm text-neutral-400 font-mono mb-1">
+                      2024.Q{4 - index}
+                    </div>
+                    <div className="text-white font-bold">{work.title}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
+
+      <CaseStudyModal
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        project={selectedProject}
+      />
     </section>
   );
 };

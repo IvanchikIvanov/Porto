@@ -5,19 +5,25 @@ import Services from './components/Services';
 import Works from './components/Works';
 import ProjectLog from './components/ProjectLog';
 import ContactFooter from './components/ContactFooter';
+import Playground from './components/Playground';
+import InteractiveCursor from './components/ui/InteractiveCursor';
 
 function App() {
   return (
-    <div className="min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black">
+    <div className="min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black cursor-none">
+      {/* Custom Cursor */}
+      <InteractiveCursor />
+
       {/* Scanline overlay */}
       <div className="scanlines"></div>
-      
+
       <Navbar />
-      
+
       <main>
         <Hero />
         <Services />
         <Works />
+        <Playground />
         <ProjectLog />
       </main>
 
