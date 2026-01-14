@@ -60,8 +60,8 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     let targetRotationY = 0;
 
     // Color scheme: Purple to Blue gradient (more purple)
-    const primaryColor = { r: 147, g: 51, b: 234 }; // Deep Purple (#9333ea)
-    const accentColor = { r: 59, g: 130, b: 246 }; // Deep Blue (#3b82f6)
+    const primaryColor = { r: 255, g: 0, b: 204 }; // Neon Pink (#ff00cc)
+    const accentColor = { r: 51, g: 0, b: 255 }; // Deep Blue (#3300ff)
 
     // Helper: Generate points on a sphere (Fibonacci Sphere algorithm for even distribution)
     const initNodes = () => {
@@ -96,7 +96,7 @@ const DigitalNeuralSphere: React.FC<Props> = ({
 
           // Connect if close enough in 3D space
           if (dist < sphereRadius * 0.35) {
-             node.connections.push(j);
+            node.connections.push(j);
           }
         });
         // Limit connections per node for aesthetics
@@ -142,15 +142,13 @@ const DigitalNeuralSphere: React.FC<Props> = ({
       ctx.clearRect(0, 0, width, height);
 
       // Update rotation based on mouse (optional, can be disabled)
-      targetRotationY = (mouseX - width / 2) * 0.0003;
-      targetRotationX = (mouseY - height / 2) * 0.0003;
+      // Auto rotation - continuous spinning (slower if dragging)
+      if (!isDragging) {
+        rotationY += speed * 0.02;
+        rotationX += speed * 0.01;
+      }
 
-      rotationY += (targetRotationY - rotationY) * 0.03;
-      rotationX += (targetRotationX - rotationX) * 0.03;
 
-      // Auto rotation - continuous spinning
-      rotationY += speed * 0.02;
-      rotationX += speed * 0.015;
 
       // Update node positions
       const cosY = Math.cos(rotationY);
@@ -181,17 +179,17 @@ const DigitalNeuralSphere: React.FC<Props> = ({
         node.connections.forEach(targetIdx => {
           const target = projectedNodes[targetIdx];
           if (node.id < target.id) {
-             const distAlpha = Math.max(0, (alpha + ((target.z + sphereRadius) / (2 * sphereRadius))) / 2);
+            const distAlpha = Math.max(0, (alpha + ((target.z + sphereRadius) / (2 * sphereRadius))) / 2);
 
-             // Gradient from purple to blue for connections
-             const gradient = ctx.createLinearGradient(node.px!, node.py!, target.px!, target.py!);
-             gradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${distAlpha * 0.15})`);
-             gradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${distAlpha * 0.15})`);
-             ctx.strokeStyle = gradient;
-             ctx.beginPath();
-             ctx.moveTo(node.px!, node.py!);
-             ctx.lineTo(target.px!, target.py!);
-             ctx.stroke();
+            // Gradient from purple to blue for connections
+            const gradient = ctx.createLinearGradient(node.px!, node.py!, target.px!, target.py!);
+            gradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${distAlpha * 0.15})`);
+            gradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${distAlpha * 0.15})`);
+            ctx.strokeStyle = gradient;
+            ctx.beginPath();
+            ctx.moveTo(node.px!, node.py!);
+            ctx.lineTo(target.px!, target.py!);
+            ctx.stroke();
           }
         });
       });
@@ -256,25 +254,61 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     // Event Listeners
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(canvas);
-    
-    window.addEventListener('mousemove', (e) => {
+
+    // Mouse interaction state
+    let isDragging = false;
+    let previousMouseX = 0;
+    let previousMouseY = 0;
+
+    const handleMouseDown = (e: MouseEvent) => {
+      isDragging = true;
+      previousMouseX = e.clientX;
+      previousMouseY = e.clientY;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-    });
+
+      if (isDragging) {
+        const deltaX = e.clientX - previousMouseX;
+        const deltaY = e.clientY - previousMouseY;
+
+        // Directly rotate based on drag
+        rotationY += deltaX * 0.005;
+        rotationX += deltaY * 0.005;
+
+        previousMouseX = e.clientX;
+        previousMouseY = e.clientY;
+      }
+    };
+
+    const handleMouseUp = () => {
+      isDragging = false;
+    };
 
     // Init
     handleResize();
     animate();
 
+    // Event Listeners
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    // Cleanup
     return () => {
       resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, [nodeCount, connectionDistance, speed]);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className={`absolute inset-0 w-full h-full ${className}`}
       style={{ width: '100%', height: '100%' }}
     />

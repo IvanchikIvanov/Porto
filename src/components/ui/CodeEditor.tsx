@@ -6,21 +6,21 @@ const CodeEditor: React.FC = () => {
   const { t } = useApp();
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
       className="relative"
     >
-      <div className="absolute -inset-1 bg-gradient-to-r from-[#9333ea] to-[#3b82f6] opacity-30 blur"></div>
+      <div className="absolute -inset-1 bg-gradient-to-r from-cyber-green to-cyber-accent opacity-30 blur"></div>
       <div className="relative bg-cyber-black border border-neutral-800 p-2 shadow-2xl">
         <div className="flex items-center justify-between px-2 pb-2 border-b border-neutral-800 mb-2 bg-neutral-900/50">
-           <div className="text-xs text-neutral-500">main.tsx</div>
-           <div className="flex gap-1.5">
-             <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-             <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-           </div>
+          <div className="text-xs text-neutral-500">main.tsx</div>
+          <div className="flex gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+          </div>
         </div>
         <div className="space-y-2 font-mono text-sm p-4 text-left">
           <div className="flex">

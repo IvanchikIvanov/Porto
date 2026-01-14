@@ -10,9 +10,8 @@ import InteractiveCursor from './components/ui/InteractiveCursor';
 
 function App() {
   return (
-    <div className="min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black cursor-none">
-      {/* Custom Cursor */}
-      <InteractiveCursor />
+    <div className="min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black">
+
 
       {/* Scanline overlay */}
       <div className="scanlines"></div>
