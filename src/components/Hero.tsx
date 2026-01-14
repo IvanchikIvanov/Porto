@@ -72,16 +72,14 @@ const Hero: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Matrix Rain Background - Full Screen */}
-          <div className="absolute inset-0 w-full h-full -z-10">
-            <MatrixRain className="absolute inset-0" />
-          </div>
-
+        {/* Matrix Rain Background - Full Screen */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
+          <MatrixRain className="absolute inset-0" />
         </div>
       </div>
-    </div>
-  );
+      );
 };
 
-export default Hero;
+      export default Hero;

@@ -81,12 +81,12 @@ const MatrixRain: React.FC<Props> = ({ className = "" }) => {
                     ctx.fillText(char, x, y);
                 }
 
-                // Reset drop to top with random delay (slower reset)
-                if (y > height && Math.random() > 0.99) {
+                // Reset drop to top with random delay
+                if (y > height && Math.random() > 0.98) {
                     drops[i] = 0;
                 }
-                // Slower speed - increment by 0.4 instead of 1
-                drops[i] += 0.4;
+                // Normal speed
+                drops[i]++;
             }
 
             animationFrameId = requestAnimationFrame(draw);
