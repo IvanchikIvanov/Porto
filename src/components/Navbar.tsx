@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Shield, Cpu, Menu, X, Sun, Moon, Globe } from 'lucide-react';
+import { Terminal, Shield, Cpu, Menu, X, Sun, Moon, Globe, Github, Instagram, Send } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 const Navbar: React.FC = () => {
@@ -63,8 +63,21 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-3 border-l border-neutral-800 pl-6">
+              {/* Social Links */}
+              <a href="https://github.com/IvanchikIvanov" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all" title="GitHub">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="https://t.me/We7drr" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all" title="Telegram">
+                <Send className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/aleksandr77698/" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all" title="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+
+              <div className="w-[1px] h-4 bg-neutral-800"></div>
+
               {/* Theme Toggle */}
-              <button 
+              <button
                 onClick={toggleTheme}
                 className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all"
                 title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
@@ -73,7 +86,7 @@ const Navbar: React.FC = () => {
               </button>
 
               {/* Language Toggle */}
-              <button 
+              <button
                 onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}
                 className="flex items-center gap-2 p-1.5 px-3 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all font-bold text-sm"
                 title="Switch Language"
@@ -86,15 +99,15 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Controls */}
           <div className="md:hidden flex items-center gap-3">
-            <button 
-                onClick={toggleTheme}
-                className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all"
-                title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-              >
-                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all"
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            
-            <button 
+
+            <button
               onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}
               className="flex items-center gap-1.5 p-1.5 px-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all font-bold text-sm"
               title="Switch Language"
@@ -128,7 +141,7 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="px-3 py-4 text-xs text-neutral-600 border-t border-neutral-900 mt-4">
-              {t('nav.mobile_status')}<br/>
+              {t('nav.mobile_status')}<br />
               TIME: {time}
             </div>
           </div>
