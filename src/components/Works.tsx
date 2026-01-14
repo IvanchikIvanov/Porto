@@ -2,47 +2,16 @@ import React, { useState } from 'react';
 import TerminalBox from './ui/TerminalBox';
 import DecodingText from './ui/DecodingText';
 import CaseStudyModal from './ui/CaseStudyModal';
-import { ExternalLink, Globe, Eye } from 'lucide-react';
+import { ExternalLink, Globe, Eye, Server } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { motion } from 'framer-motion';
 
-interface Work {
-  title: string;
-  description: string;
-  url: string;
-  tech: string;
-  challenge?: string;
-  solution?: string;
-}
-
 const Works: React.FC = () => {
   const { t } = useApp();
-  const [selectedProject, setSelectedProject] = useState<Work | null>(null);
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
-  const works: Work[] = [
-    {
-      title: 'Geo Transport',
-      description: 'Агрегатор транспортной логистики. Платформа для поиска и заказа грузоперевозок с интеграцией карт, системой отзывов и автоматическим подбором оптимальных маршрутов.',
-      url: 'https://geo-transport.ru/',
-      tech: 'React, TypeScript, Node.js',
-      challenge: 'Creating a real-time tracking system for thousands of shipments while maintaining high performance on mobile devices for drivers.',
-      solution: 'Implemented WebSocket connections for live updates and optimized map rendering using WebGL.'
-    },
-    {
-      title: 'Project 2',
-      description: 'Description of project 2',
-      url: 'https://example.com',
-      tech: 'Next.js, Tailwind',
-      challenge: 'Building a highly scalable e-commerce platform capable of handling flash sales.',
-      solution: 'Utilized static site generation (SSG) for product pages and detailed caching strategies.'
-    },
-    {
-      title: 'Project 3',
-      description: 'Description of project 3',
-      url: 'https://example.com',
-      tech: 'Vue.js, Node.js'
-    }
-  ];
+  // Cast to any[] to safely map over translated items
+  const worksList = t('works.items') as any[];
 
   return (
     <section id="works" className="py-24 bg-cyber-gray/30 relative transition-colors">
@@ -61,13 +30,13 @@ const Works: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left column - Project cards */}
           <div className="space-y-8">
-            {works.map((work, index) => (
+            {Array.isArray(worksList) && worksList.map((work, index) => (
               <motion.div
                 key={index}
                 whileHover={{
-                  scale: 1.02,
-                  rotateX: 2,
-                  rotateY: 2,
+                  scale: 1.01,
+                  rotateX: 1,
+                  rotateY: 1,
                   transition: { duration: 0.2 }
                 }}
                 className="perspective-1000"
@@ -75,7 +44,7 @@ const Works: React.FC = () => {
               >
                 <div className="cursor-pointer">
                   <TerminalBox
-                    title={`project_${index + 1}.js`}
+                    title={`case_${index + 1}.log`}
                     className="group shadow-2xl hover:shadow-cyber-green/20 transition-all border-neutral-800 hover:border-cyber-green/50"
                     borderColor={index === 0 ? 'green' : 'gray'}
                   >
@@ -88,7 +57,7 @@ const Works: React.FC = () => {
                           <Eye className="w-3 h-3" />
                           <span>View Case</span>
                         </div>
-                        <div className="text-xs text-neutral-600 font-mono">v1.0.0</div>
+                        <div className="text-xs text-neutral-600 font-mono">Status: PROD</div>
                       </div>
                     </div>
                     <h3 className="text-xl text-white font-bold font-mono mb-3 group-hover:text-cyber-green transition-colors">
@@ -98,7 +67,7 @@ const Works: React.FC = () => {
                         scrambleClassName="text-cyber-accent"
                       />
                     </h3>
-                    <p className="text-neutral-400 text-sm mb-4 line-clamp-2">
+                    <p className="text-neutral-400 text-sm mb-4 line-clamp-2 leading-relaxed">
                       {work.description}
                     </p>
                     <div className="pt-4 border-t border-neutral-800 flex justify-between items-center">
@@ -123,11 +92,15 @@ const Works: React.FC = () => {
               <div className="space-y-4 text-sm font-mono text-neutral-400">
                 <div className="flex justify-between border-b border-neutral-800 pb-2">
                   <span>DEPLOYED_PROJECTS</span>
-                  <span className="text-white">3</span>
+                  <span className="text-white">12</span>
                 </div>
                 <div className="flex justify-between border-b border-neutral-800 pb-2">
                   <span>AVG_PERFORMANCE</span>
-                  <span className="text-green-400">98/100</span>
+                  <span className="text-green-400">99/100</span>
+                </div>
+                <div className="flex justify-between border-b border-neutral-800 pb-2">
+                  <span>SERVER_LOAD</span>
+                  <span className="text-blue-400">42%</span>
                 </div>
                 <div className="flex justify-between">
                   <span>LAST_COMMIT</span>
@@ -137,15 +110,16 @@ const Works: React.FC = () => {
             </div>
 
             <div className="hidden lg:block">
-              <h3 className="text-neutral-500 font-mono text-sm mb-4 uppercase tracking-wider">Project Timeline</h3>
+              <h3 className="text-neutral-500 font-mono text-sm mb-4 uppercase tracking-wider">Production Timeline</h3>
               <div className="border-l-2 border-neutral-800 pl-6 space-y-8">
-                {works.map((work, index) => (
+                {Array.isArray(worksList) && worksList.map((work, index) => (
                   <div key={index} className="relative">
                     <div className={`absolute -left-[29px] top-1 w-3 h-3 rounded-full border-2 ${index === 0 ? 'bg-cyber-green border-cyber-green' : 'bg-neutral-900 border-neutral-700'}`}></div>
                     <div className="text-sm text-neutral-400 font-mono mb-1">
-                      2024.Q{4 - index}
+                      2025.Q{Math.max(1, 4 - index)}
                     </div>
                     <div className="text-white font-bold">{work.title}</div>
+                    <div className="text-xs text-neutral-600 mt-1 line-clamp-1">{work.tech}</div>
                   </div>
                 ))}
               </div>
@@ -165,4 +139,3 @@ const Works: React.FC = () => {
 };
 
 export default Works;
-
