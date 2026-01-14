@@ -26,9 +26,9 @@ const MatrixRain: React.FC<Props> = ({ className = "" }) => {
         let columns = Math.floor(width / fontSize);
         let drops: number[] = [];
 
-        // Colors
+        // Colors - Violet only
         const primaryColor = '#7c3aed'; // Violet
-        const accentColor = '#3b82f6'; // Blue
+        const primaryColorDim = 'rgba(124, 58, 237, 0.6)';
 
         const initDrops = () => {
             columns = Math.floor(width / fontSize);
@@ -65,31 +65,28 @@ const MatrixRain: React.FC<Props> = ({ className = "" }) => {
                 // Create gradient effect based on position
                 const progress = (y / height);
 
-                if (progress < 0.3) {
-                    ctx.fillStyle = accentColor; // Blue at top
-                } else if (progress < 0.7) {
-                    ctx.fillStyle = primaryColor; // Violet in middle
-                } else {
-                    ctx.fillStyle = `rgba(124, 58, 237, ${0.8 - progress})`; // Fading violet
-                }
+                // All violet color scheme
+                const alpha = Math.min(1, progress + 0.3);
+                ctx.fillStyle = `rgba(124, 58, 237, ${alpha * 0.8})`;
 
-                // Draw head character brighter
+                // Draw head character brighter (white/light violet)
                 if (drops[i] > 0 && drops[i] < height / fontSize) {
-                    ctx.fillStyle = '#fff';
+                    ctx.fillStyle = 'rgba(200, 180, 255, 0.9)'; // Light violet head
                     ctx.fillText(char, x, y);
 
-                    // Draw trailing character
+                    // Draw trailing character in violet
                     ctx.fillStyle = primaryColor;
                     ctx.fillText(charArray[Math.floor(Math.random() * charArray.length)], x, y - fontSize);
                 } else {
                     ctx.fillText(char, x, y);
                 }
 
-                // Reset drop to top with random delay
-                if (y > height && Math.random() > 0.975) {
+                // Reset drop to top with random delay (slower reset)
+                if (y > height && Math.random() > 0.99) {
                     drops[i] = 0;
                 }
-                drops[i]++;
+                // Slower speed - increment by 0.4 instead of 1
+                drops[i] += 0.4;
             }
 
             animationFrameId = requestAnimationFrame(draw);

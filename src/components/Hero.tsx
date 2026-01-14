@@ -73,7 +73,8 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="hidden lg:block absolute right-0 top-0 w-[60%] h-full">
+          {/* Matrix Rain Background - Full Screen */}
+          <div className="absolute inset-0 w-full h-full -z-10">
             <MatrixRain className="absolute inset-0" />
           </div>
 
