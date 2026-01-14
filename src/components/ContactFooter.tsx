@@ -1,65 +1,48 @@
 import React from 'react';
-import { Send, Github, Instagram } from 'lucide-react';
+import { Send, Github, Instagram, Mail, MessageCircle } from 'lucide-react';
 import DecodingText from './ui/DecodingText';
 import { useApp } from '../context/AppContext';
 
 const ContactFooter: React.FC = () => {
-  const { t } = useApp();
+  const { t, language } = useApp();
 
   return (
     <footer id="contact" className="bg-cyber-black border-t border-neutral-800 pt-20 pb-10 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
         <h2 className="text-4xl font-bold text-white mb-6 font-mono">
-          {t('footer.title_pre')} <span className="text-cyber-green"><DecodingText text={t('footer.title_highlight')} scrambleClassName="text-white" /></span>?
+          {language === 'ru' ? 'ГОТОВЫ' : 'READY TO'} <span className="text-cyber-green"><DecodingText text={language === 'ru' ? 'НАЧАТЬ' : 'INITIATE'} scrambleClassName="text-white" /></span>?
         </h2>
-        <p className="text-neutral-400 mb-10 font-mono">
-          {t('footer.desc')}
+        <p className="text-neutral-400 mb-10 font-mono max-w-xl mx-auto">
+          {language === 'ru'
+            ? "Напишите нам в Telegram или на почту. Мы отвечаем на все сообщения в течение 24 часов. Никакой воды — только конкретика и решения."
+            : "Reach out via Telegram or email. We respond to all messages within 24 hours. No fluff — just specifics and solutions."}
         </p>
 
-        <form className="max-w-md mx-auto space-y-4 text-left">
-          <div className="relative group">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <span className="text-neutral-600 font-mono text-sm">&gt;</span>
-            </div>
-            <input
-              type="text"
-              placeholder={t('footer.ph_name')}
-              className="block w-full pl-8 pr-3 py-3 bg-neutral-900/50 border border-neutral-800 text-white placeholder-neutral-600 font-mono focus:outline-none focus:border-cyber-green focus:ring-1 focus:ring-cyber-green transition-colors"
-            />
-          </div>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <a
+            href="https://t.me/We7drr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-8 py-4 bg-cyber-green text-white font-bold font-mono hover:bg-white hover:text-black transition-all"
+          >
+            <Send className="w-5 h-5" />
+            TELEGRAM
+          </a>
+          <a
+            href="mailto:contact@siteberry.pro"
+            className="flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-mono hover:border-cyber-green hover:text-cyber-green transition-all"
+          >
+            <Mail className="w-5 h-5" />
+            EMAIL
+          </a>
+        </div>
 
-          <div className="relative group">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <span className="text-neutral-600 font-mono text-sm">&gt;</span>
-            </div>
-            <input
-              type="email"
-              placeholder={t('footer.ph_email')}
-              className="block w-full pl-8 pr-3 py-3 bg-neutral-900/50 border border-neutral-800 text-white placeholder-neutral-600 font-mono focus:outline-none focus:border-cyber-green focus:ring-1 focus:ring-cyber-green transition-colors"
-            />
-          </div>
-
-          <div className="relative group">
-            <div className="absolute top-3 left-3 pointer-events-none">
-              <span className="text-neutral-600 font-mono text-sm">&gt;</span>
-            </div>
-            <textarea
-              rows={4}
-              placeholder={t('footer.ph_msg')}
-              className="block w-full pl-8 pr-3 py-3 bg-neutral-900/50 border border-neutral-800 text-white placeholder-neutral-600 font-mono focus:outline-none focus:border-cyber-green focus:ring-1 focus:ring-cyber-green transition-colors resize-none"
-            ></textarea>
-          </div>
-
-          <button type="submit" className="w-full flex items-center justify-center gap-2 bg-cyber-green text-white font-bold font-mono py-3 hover:bg-neutral-300 hover:text-black transition-colors">
-            <Send className="w-4 h-4" />
-            {t('footer.btn_send')}
-          </button>
-        </form>
-
-        <div className="mt-20 pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between text-xs text-neutral-600 font-mono">
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between text-xs text-neutral-600 font-mono">
           <div>
-            {t('footer.rights')}
+            © 2025 SITEBERRY.PRO // {language === 'ru' ? 'ВСЕ ПРАВА ЗАЩИЩЕНЫ' : 'ALL RIGHTS RESERVED'}
           </div>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href="https://github.com/IvanchikIvanov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-green transition-colors"><Github className="w-4 h-4" /> GITHUB</a>
