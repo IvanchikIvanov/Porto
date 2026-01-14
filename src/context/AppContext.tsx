@@ -19,7 +19,7 @@ const translations = {
     'nav.status': 'SYSTEM: SECURE',
     'nav.core': 'CORE: ACTIVE',
     'nav.mobile_status': 'STATUS: ONLINE',
-    
+
     'hero.cmd': 'initialize_sequence.sh',
     'hero.digital': 'DIGITAL',
     'hero.reality': 'REALITY',
@@ -82,7 +82,7 @@ const translations = {
     'nav.status': 'СИСТЕМА: ЗАЩИЩЕНА',
     'nav.core': 'ЯДРО: АКТИВНО',
     'nav.mobile_status': 'СТАТУС: ОНЛАЙН',
-    
+
     'hero.cmd': 'запуск_последовательности.sh',
     'hero.digital': 'ЦИФРОВАЯ',
     'hero.reality': 'РЕАЛЬНОСТЬ',
@@ -160,8 +160,20 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  const t = (key: string) => {
-    return translations[language][key as keyof typeof translations['en']] || key;
+  const t = (path: string) => {
+    // Nested key lookup (e.g., 'services.items')
+    const keys = path.split('.');
+    let current: any = translations[language];
+
+    for (const k of keys) {
+      if (current && typeof current === 'object' && k in current) {
+        current = current[k];
+      } else {
+        console.warn(`Translation missing for key: ${path}`);
+        return path; // Fallback to key
+      }
+    }
+    return current;
   };
 
   return (

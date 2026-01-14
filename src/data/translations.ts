@@ -1,5 +1,13 @@
 export const translations = {
     en: {
+        nav: {
+            services: '. /SERVICES',
+            portfolio: '. /PORTFOLIO',
+            contact: '. /CONTACT',
+            status: 'SYSTEM: SECURE',
+            core: 'CORE: ACTIVE',
+            mobile_status: 'SYS_Integrity: 100%'
+        },
         meta: {
             title: "Siteberry // Digital Production Studio // Web3 & AI",
             description: "High-performance web applications, AI-integrated Telegram bots, and experimental UI design. Smart contracts, full-stack development, and pure code aesthetics.",
@@ -108,6 +116,14 @@ export const translations = {
         }
     },
     ru: {
+        nav: {
+            services: '. /УСЛУГИ',
+            portfolio: '. /ПОРТФОЛИО',
+            contact: '. /КОНТАКТЫ',
+            status: 'СИСТЕМА: ЗАЩИЩЕНА',
+            core: 'ЯДРО: АКТИВНО',
+            mobile_status: 'SYS_Integrity: 100%'
+        },
         meta: {
             title: "Siteberry // Студия Цифрового Продакшена // Web3 & AI",
             description: "Разработка высоконагруженных веб-приложений, Telegram-ботов с ИИ и экспериментальных UI. Смарт-контракты, чистый код и эстетика киберпанка.",
