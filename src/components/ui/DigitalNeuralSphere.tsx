@@ -45,7 +45,7 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     let height = canvas.offsetHeight || 600;
 
     // Config
-    const sphereRadius = Math.min(width, height) * 0.49;
+    const sphereRadius = Math.min(width, height) * 0.45; // Slightly reduced to ensure it fits
     const nodes: Node[] = [];
     let pulses: Pulse[] = [];
 
@@ -56,12 +56,10 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     // Mouse interaction
     let mouseX = width / 2;
     let mouseY = height / 2;
-    let targetRotationX = 0;
-    let targetRotationY = 0;
 
-    // Color scheme: Purple to Blue gradient (more purple)
-    const primaryColor = { r: 255, g: 0, b: 204 }; // Neon Pink (#ff00cc)
-    const accentColor = { r: 51, g: 0, b: 255 }; // Deep Blue (#3300ff)
+    // Color scheme: Violet (primary) to Blue (accent) with Pink traces
+    const primaryColor = { r: 124, g: 58, b: 237 }; // Violet (#7c3aed)
+    const accentColor = { r: 59, g: 130, b: 246 }; // Blue (#3b82f6)
 
     // Helper: Generate points on a sphere (Fibonacci Sphere algorithm for even distribution)
     const initNodes = () => {
@@ -141,14 +139,11 @@ const DigitalNeuralSphere: React.FC<Props> = ({
       // Clear canvas
       ctx.clearRect(0, 0, width, height);
 
-      // Update rotation based on mouse (optional, can be disabled)
       // Auto rotation - continuous spinning (slower if dragging)
       if (!isDragging) {
         rotationY += speed * 0.02;
         rotationX += speed * 0.01;
       }
-
-
 
       // Update node positions
       const cosY = Math.cos(rotationY);
@@ -174,17 +169,20 @@ const DigitalNeuralSphere: React.FC<Props> = ({
       ctx.lineWidth = 1;
 
       projectedNodes.forEach(node => {
-        const alpha = (node.z + sphereRadius) / (2 * sphereRadius);
-        if (alpha < 0) return;
+        // Calculate alpha based on depth, keep back nodes visible but dim
+        const normalizedZ = (node.z + sphereRadius) / (2 * sphereRadius); // 0 to 1
+        const alpha = 0.15 + (normalizedZ * 0.85); // Min opacity 0.15
+
         node.connections.forEach(targetIdx => {
           const target = projectedNodes[targetIdx];
           if (node.id < target.id) {
-            const distAlpha = Math.max(0, (alpha + ((target.z + sphereRadius) / (2 * sphereRadius))) / 2);
+            const targetNormalizedZ = (target.z + sphereRadius) / (2 * sphereRadius);
+            const distAlpha = Math.max(0.05, (alpha + targetNormalizedZ) / 2); // Keep back lines very dim
 
             // Gradient from purple to blue for connections
             const gradient = ctx.createLinearGradient(node.px!, node.py!, target.px!, target.py!);
-            gradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${distAlpha * 0.15})`);
-            gradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${distAlpha * 0.15})`);
+            gradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${distAlpha * 0.4})`);
+            gradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${distAlpha * 0.4})`);
             ctx.strokeStyle = gradient;
             ctx.beginPath();
             ctx.moveTo(node.px!, node.py!);
@@ -220,7 +218,7 @@ const DigitalNeuralSphere: React.FC<Props> = ({
         ctx.arc(curX, curY, 2 * scale, 0, Math.PI * 2);
         ctx.fill();
 
-        // Glow effect with gradient (purple to blue)
+        // Glow
         const glowGradient = ctx.createRadialGradient(curX, curY, 0, curX, curY, 6 * scale);
         glowGradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha * 0.5})`);
         glowGradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${alpha * 0.2})`);
@@ -232,16 +230,19 @@ const DigitalNeuralSphere: React.FC<Props> = ({
 
       // 4. Draw Nodes
       projectedNodes.forEach(node => {
-        const alpha = (node.z + sphereRadius) / (2 * sphereRadius);
-        if (alpha <= 0.1) return;
-        const size = 2 * node.scale!;
+        const normalizedZ = (node.z + sphereRadius) / (2 * sphereRadius);
+        const alpha = 0.2 + (normalizedZ * 0.8); // Min opacity 0.2 for back nodes
 
-        // Node fill with gradient (more purple, transitioning to blue)
+        const size = (1.5 * node.scale!) + (normalizedZ * 2.5); // Back nodes smaller
+
+        // Node fill with gradient 
         const nodeGradient = ctx.createRadialGradient(node.px!, node.py!, 0, node.px!, node.py!, size * 2);
-        const purpleRatio = 0.7; // 70% purple, 30% blue
+
+        // Gradient: Violet -> Pinkish -> Blue
         nodeGradient.addColorStop(0, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha})`);
-        nodeGradient.addColorStop(purpleRatio, `rgba(${primaryColor.r}, ${primaryColor.g}, ${primaryColor.b}, ${alpha * 0.8})`);
-        nodeGradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${alpha * 0.6})`);
+        nodeGradient.addColorStop(0.5, `rgba(236, 72, 153, ${alpha * 0.9})`); // Pink hint
+        nodeGradient.addColorStop(1, `rgba(${accentColor.r}, ${accentColor.g}, ${accentColor.b}, ${alpha * 0.7})`);
+
         ctx.fillStyle = nodeGradient;
         ctx.beginPath();
         ctx.arc(node.px!, node.py!, size, 0, Math.PI * 2);
@@ -274,7 +275,6 @@ const DigitalNeuralSphere: React.FC<Props> = ({
         const deltaX = e.clientX - previousMouseX;
         const deltaY = e.clientY - previousMouseY;
 
-        // Directly rotate based on drag
         rotationY += deltaX * 0.005;
         rotationX += deltaY * 0.005;
 
@@ -287,16 +287,14 @@ const DigitalNeuralSphere: React.FC<Props> = ({
       isDragging = false;
     };
 
-    // Init
-    handleResize();
-    animate();
-
-    // Event Listeners
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
 
-    // Cleanup
+    // Init
+    handleResize();
+    animate();
+
     return () => {
       resizeObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
@@ -316,4 +314,3 @@ const DigitalNeuralSphere: React.FC<Props> = ({
 };
 
 export default DigitalNeuralSphere;
-
