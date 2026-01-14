@@ -9,6 +9,11 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+      {/* Matrix Rain Background - Full Screen */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <MatrixRain className="absolute inset-0" />
+      </div>
+
       {/* Background gradient effect */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-20 left-10 w-64 h-64 bg-cyber-green/20 rounded-full blur-3xl"></div>
@@ -26,8 +31,6 @@ const Hero: React.FC = () => {
               <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none">
                 <DecodingText text={t('hero.digital')} startDelay={500} /><br />
                 <span className="text-neutral-500">{t('hero.reality')}</span><br />
-                {/* We use text-white for scramble here to contrast against the primary text in dark mode. 
-                    In light mode 'text-white' maps to dark text via tailwind config override. */}
                 <DecodingText
                   text={t('hero.architects')}
                   className="text-cyber-green"
@@ -73,13 +76,9 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Matrix Rain Background - Full Screen */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
-          <MatrixRain className="absolute inset-0" />
-        </div>
       </div>
-      );
+    </div>
+  );
 };
 
-      export default Hero;
+export default Hero;
