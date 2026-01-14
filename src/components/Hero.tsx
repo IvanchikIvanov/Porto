@@ -1,6 +1,6 @@
 import React from 'react';
 import DecodingText from './ui/DecodingText';
-import DigitalNeuralSphere from './ui/DigitalNeuralSphere';
+import MatrixRain from './ui/MatrixRain';
 import { ArrowRight, Code, Database, Globe } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -73,12 +73,8 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="hidden lg:block relative w-[120%] -right-20 h-[800px]">
-            <DigitalNeuralSphere
-              className="absolute inset-0"
-              nodeCount={280}
-              speed={0.2}
-            />
+          <div className="hidden lg:block absolute right-0 top-0 w-[60%] h-full">
+            <MatrixRain className="absolute inset-0" />
           </div>
 
         </div>
