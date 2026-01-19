@@ -4,6 +4,7 @@ import DecodingText from './ui/DecodingText';
 import TerminalBox from './ui/TerminalBox';
 import MagneticButton from './ui/MagneticButton';
 import WireframeGeometry from './ui/WireframeGeometry';
+import FluidArt from './ui/FluidArt';
 import { useApp } from '../context/AppContext';
 
 const Playground: React.FC = () => {
@@ -91,6 +92,19 @@ const Playground: React.FC = () => {
                         </div>
                         <div className="text-xs text-neutral-500 font-mono">
                             <span className="text-blue-400">uniform</span> float uTime;
+                        </div>
+                    </TerminalBox>
+
+                    {/* Experiment 4: Ink Simulation */}
+                    <TerminalBox title="fluid_dynamics.glsl" borderColor="cyan">
+                        <div className="h-64 bg-black rounded-lg overflow-hidden relative mb-4">
+                            <FluidArt className="absolute inset-0" />
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <span className="text-cyan-500/30 font-mono text-sm uppercase tracking-widest">Move Surface</span>
+                            </div>
+                        </div>
+                        <div className="text-xs text-neutral-500 font-mono">
+                            <span className="text-cyan-400">#define</span> DISSIPATION 0.98
                         </div>
                     </TerminalBox>
 
