@@ -1,6 +1,7 @@
 import React from 'react';
 import { Send, Github, Instagram, Mail, MessageCircle } from 'lucide-react';
 import DecodingText from './ui/DecodingText';
+import GlowingButton from './ui/GlowingButton';
 import { useApp } from '../context/AppContext';
 
 const ContactFooter: React.FC = () => {
@@ -21,18 +22,19 @@ const ContactFooter: React.FC = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a
+          <GlowingButton
             href="https://t.me/We7drr"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-8 py-4 bg-cyber-green text-white font-bold font-mono hover:bg-white hover:text-black transition-all"
           >
-            <Send className="w-5 h-5" />
-            TELEGRAM
-          </a>
+            <span className="flex items-center gap-3 font-bold font-mono">
+              <Send className="w-5 h-5" />
+              TELEGRAM
+            </span>
+          </GlowingButton>
           <a
             href="mailto:contact@siteberry.pro"
-            className="flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-mono hover:border-cyber-green hover:text-cyber-green transition-all"
+            className="flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-mono hover:border-cyber-green hover:text-cyber-green transition-all rounded-full"
           >
             <Mail className="w-5 h-5" />
             EMAIL

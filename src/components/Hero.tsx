@@ -1,6 +1,7 @@
 import React from 'react';
 import DecodingText from './ui/DecodingText';
 import MatrixRain from './ui/MatrixRain';
+import GlowingButton from './ui/GlowingButton';
 import { ArrowRight, Code, Database, Globe } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -45,16 +46,16 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="group relative inline-flex items-center gap-3 px-8 py-3 bg-cyber-green text-white font-bold font-mono tracking-wider overflow-hidden hover:bg-white hover:text-black hover:border-transparent border border-transparent transition-all"
-              >
-                <span>{t('hero.btn_start')}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              <GlowingButton href="#contact" className="w-fit">
+                <span className="flex items-center gap-3 font-bold font-mono tracking-wider">
+                  {t('hero.btn_start')}
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </GlowingButton>
+
               <a
                 href="#services"
-                className="inline-flex items-center gap-3 px-8 py-3 border border-neutral-700 text-white font-mono tracking-wider hover:border-cyber-green hover:text-cyber-green transition-all bg-cyber-black/50"
+                className="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-neutral-800 text-neutral-400 font-mono tracking-wider hover:border-cyber-green hover:text-cyber-green transition-all bg-black/50 hover:bg-black/80"
               >
                 <span>{t('hero.btn_docs')}</span>
               </a>
@@ -78,6 +79,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
