@@ -106,6 +106,14 @@ export const translations = {
                     tech: 'Next.js, D3.js, Tailwind',
                     challenge: 'Visualizing massive datasets without browser lag. Creating a "cyberpunk" feel without sacrificing usability.',
                     solution: 'Used Canvas API for heavy charting and implemented a custom design system with semantic color tokens.'
+                },
+                {
+                    title: 'Sotovik',
+                    description: 'Modern e-commerce platform for mobile phones. Sleek UI with dark/light theme toggle and product catalog.',
+                    url: 'https://sotovik.vercel.app/',
+                    tech: 'React, Vite, TypeScript, Tailwind',
+                    challenge: 'Creating a fast, responsive e-commerce experience with seamless theme switching and optimized product filtering.',
+                    solution: 'Built with Vite for instant HMR, implemented context-based theme management, and optimized image loading with lazy load.'
                 }
             ]
         },
@@ -222,6 +230,14 @@ export const translations = {
                     tech: 'Next.js, D3.js, Tailwind',
                     challenge: 'Визуализация массивных датасетов без лагов браузера. Создание "киберпанк" атмосферы без ущерба юзабилити.',
                     solution: 'Использовали Canvas API для тяжелых графиков и внедрили дизайн-систему с семантическими токенами.'
+                },
+                {
+                    title: 'Sotovik',
+                    description: 'Современный e-commerce магазин мобильных телефонов. Стильный UI с переключением тёмной/светлой темы.',
+                    url: 'https://sotovik.vercel.app/',
+                    tech: 'React, Vite, TypeScript, Tailwind',
+                    challenge: 'Создание быстрого, отзывчивого e-commerce с плавным переключением тем и оптимизированной фильтрацией товаров.',
+                    solution: 'Использовали Vite для мгновенного HMR, контекст для управления темой и ленивую загрузку изображений.'
                 }
             ]
         },
