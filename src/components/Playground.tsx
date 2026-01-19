@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import DecodingText from './ui/DecodingText';
 import TerminalBox from './ui/TerminalBox';
 import MagneticButton from './ui/MagneticButton';
+import WireframeGeometry from './ui/WireframeGeometry';
 import { useApp } from '../context/AppContext';
 
 const Playground: React.FC = () => {
@@ -83,17 +84,15 @@ const Playground: React.FC = () => {
                         </div>
                     </TerminalBox>
 
-                    {/* Experiment 3: Scroll Parallax */}
-                    <motion.div style={{ y }} className="hidden lg:block">
-                        <div className="p-1 rounded-lg bg-gradient-to-br from-neutral-800 to-transparent h-full">
-                            <div className="bg-black/90 h-full rounded p-6 flex flex-col justify-center items-center text-center opacity-70 hover:opacity-100 transition-opacity">
-                                <h3 className="text-2xl font-mono text-neutral-600 mb-4">COMING SOON</h3>
-                                <div className="w-full h-2 bg-neutral-800 rounded-full overflow-hidden">
-                                    <div className="w-1/3 h-full bg-neutral-600 animate-pulse"></div>
-                                </div>
-                            </div>
+                    {/* Experiment 3: Morphing Geometry */}
+                    <TerminalBox title="geometry_morph.ts" borderColor="gray">
+                        <div className="h-64 bg-black/40 rounded-lg overflow-hidden relative mb-4">
+                            <WireframeGeometry />
                         </div>
-                    </motion.div>
+                        <div className="text-xs text-neutral-500 font-mono">
+                            <span className="text-blue-400">uniform</span> float uTime;
+                        </div>
+                    </TerminalBox>
 
                 </div>
             </div>
