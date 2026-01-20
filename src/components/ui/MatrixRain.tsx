@@ -26,9 +26,9 @@ const MatrixRain: React.FC<Props> = ({ className = "" }) => {
         let columns = Math.floor(width / fontSize);
         let drops: number[] = [];
 
-        // Colors - Violet only
-        const primaryColor = '#7c3aed'; // Violet
-        const primaryColorDim = 'rgba(124, 58, 237, 0.6)';
+        // Colors - Cyan palette
+        const primaryColor = '#22d3ee'; // Cyan
+        const primaryColorDim = 'rgba(34, 211, 238, 0.6)';
 
         const initDrops = () => {
             columns = Math.floor(width / fontSize);
@@ -65,13 +65,13 @@ const MatrixRain: React.FC<Props> = ({ className = "" }) => {
                 // Create gradient effect based on position
                 const progress = (y / height);
 
-                // All violet color scheme
+                // Cyan color scheme
                 const alpha = Math.min(1, progress + 0.3);
-                ctx.fillStyle = `rgba(124, 58, 237, ${alpha * 0.8})`;
+                ctx.fillStyle = `rgba(34, 211, 238, ${alpha * 0.8})`;
 
-                // Draw head character brighter (white/light violet)
+                // Draw head character brighter (white/light cyan)
                 if (drops[i] > 0 && drops[i] < height / fontSize) {
-                    ctx.fillStyle = 'rgba(200, 180, 255, 0.9)'; // Light violet head
+                    ctx.fillStyle = 'rgba(200, 255, 255, 0.9)'; // Light cyan head
                     ctx.fillText(char, x, y);
 
                     // Draw trailing character in violet

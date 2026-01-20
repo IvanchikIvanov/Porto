@@ -18,7 +18,7 @@ const GlowingButton: React.FC<GlowingButtonProps> = ({ children, onClick, href, 
             {/* Animated Gradient Border */}
             <div className="absolute -inset-[1px] rounded-full overflow-hidden">
                 <motion.div
-                    className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,cyan_360deg)] opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,var(--primary)_360deg)] opacity-60 group-hover:opacity-100 transition-opacity duration-500"
                     animate={{ rotate: 360 }}
                     transition={{
                         duration: 3,

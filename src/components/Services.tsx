@@ -26,7 +26,7 @@ const Services: React.FC = () => {
 
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-white font-mono mb-4 flex items-center">
-            <span className="text-cyber-green mr-2">$</span>
+            <span className="text-cyber-primary mr-2">$</span>
             <DecodingText text={t('services.header_cmd')} />
           </h2>
           <p className="text-neutral-400 font-mono max-w-2xl">
@@ -42,17 +42,17 @@ const Services: React.FC = () => {
               <TerminalBox
                 key={index}
                 title={`module_${service.id}.js`}
-                className="hover:translate-y-[-4px] transition-transform h-full group cursor-default shadow-lg hover:shadow-cyber-green/10"
-                borderColor={index % 2 === 0 ? 'green' : 'gray'}
+                className="hover:translate-y-[-4px] transition-transform h-full group cursor-default shadow-lg hover:shadow-cyber-primary/10"
+                borderColor={index % 2 === 0 ? 'cyan' : 'gray'}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 group-hover:border-cyber-green transition-colors rounded-md">
-                    <IconComponent className="w-6 h-6 text-cyber-green" />
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 group-hover:border-cyber-primary transition-colors rounded-md">
+                    <IconComponent className="w-6 h-6 text-cyber-primary" />
                   </div>
                   <div className="text-xs text-neutral-600 font-mono">v{3}.{index}.{0}</div>
                 </div>
 
-                <h3 className="text-xl text-white font-bold font-mono mb-2 group-hover:text-cyber-green transition-colors min-h-[56px] flex items-end">
+                <h3 className="text-xl text-white font-bold font-mono mb-2 group-hover:text-cyber-primary transition-colors min-h-[56px] flex items-end">
                   <DecodingText
                     text={service.title}
                     triggerOnHover={true}

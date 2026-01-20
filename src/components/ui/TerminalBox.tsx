@@ -4,16 +4,16 @@ interface TerminalBoxProps {
   children: React.ReactNode;
   title?: string;
   className?: string;
-  borderColor?: 'green' | 'gray';
+  borderColor?: 'cyan' | 'gray' | 'primary';
 }
 
-const TerminalBox: React.FC<TerminalBoxProps> = ({ 
-  children, 
-  title = 'user@siteberry:~', 
+const TerminalBox: React.FC<TerminalBoxProps> = ({
+  children,
+  title = 'user@siteberry:~',
   className = '',
   borderColor = 'gray'
 }) => {
-  const borderClass = borderColor === 'green' ? 'border-cyber-green' : 'border-neutral-800 hover:border-cyber-green/50';
+  const borderClass = (borderColor === 'cyan' || borderColor === 'primary') ? 'border-cyber-primary' : 'border-neutral-800 hover:border-cyber-primary/50';
 
   return (
     <div className={`relative border bg-cyber-black/80 backdrop-blur-sm transition-colors duration-300 ${borderClass} ${className}`}>
@@ -28,8 +28,8 @@ const TerminalBox: React.FC<TerminalBoxProps> = ({
         {children}
       </div>
       {/* Decorative corners */}
-      <div className="absolute -top-[1px] -left-[1px] w-2 h-2 border-t border-l border-cyber-green opacity-70"></div>
-      <div className="absolute -bottom-[1px] -right-[1px] w-2 h-2 border-b border-r border-cyber-green opacity-70"></div>
+      <div className="absolute -top-[1px] -left-[1px] w-2 h-2 border-t border-l border-cyber-primary opacity-70"></div>
+      <div className="absolute -bottom-[1px] -right-[1px] w-2 h-2 border-b border-r border-cyber-primary opacity-70"></div>
     </div>
   );
 };

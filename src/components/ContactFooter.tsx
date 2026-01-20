@@ -12,7 +12,7 @@ const ContactFooter: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
         <h2 className="text-4xl font-bold text-white mb-6 font-mono">
-          {language === 'ru' ? 'ГОТОВЫ' : 'READY TO'} <span className="text-cyber-green"><DecodingText text={language === 'ru' ? 'НАЧАТЬ' : 'INITIATE'} scrambleClassName="text-white" /></span>?
+          {language === 'ru' ? 'ГОТОВЫ' : 'READY TO'} <span className="text-cyber-primary"><DecodingText text={language === 'ru' ? 'НАЧАТЬ' : 'INITIATE'} scrambleClassName="text-white" /></span>?
         </h2>
         <p className="text-neutral-400 mb-10 font-mono max-w-xl mx-auto">
           {language === 'ru'
@@ -34,7 +34,7 @@ const ContactFooter: React.FC = () => {
           </GlowingButton>
           <a
             href="mailto:contact@siteberry.pro"
-            className="flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-mono hover:border-cyber-green hover:text-cyber-green transition-all rounded-full"
+            className="flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-mono hover:border-cyber-primary hover:text-cyber-primary transition-all rounded-full"
           >
             <Mail className="w-5 h-5" />
             EMAIL
@@ -47,9 +47,9 @@ const ContactFooter: React.FC = () => {
             © 2025 SITEBERRY.PRO // {language === 'ru' ? 'ВСЕ ПРАВА ЗАЩИЩЕНЫ' : 'ALL RIGHTS RESERVED'}
           </div>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="https://github.com/IvanchikIvanov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-green transition-colors"><Github className="w-4 h-4" /> GITHUB</a>
-            <a href="https://t.me/We7drr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-green transition-colors"><Send className="w-4 h-4" /> TELEGRAM</a>
-            <a href="https://www.instagram.com/aleksandr77698/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-green transition-colors"><Instagram className="w-4 h-4" /> INSTAGRAM</a>
+            <a href="https://github.com/IvanchikIvanov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-primary transition-colors"><Github className="w-4 h-4" /> GITHUB</a>
+            <a href="https://t.me/We7drr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-primary transition-colors"><Send className="w-4 h-4" /> TELEGRAM</a>
+            <a href="https://www.instagram.com/aleksandr77698/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-primary transition-colors"><Instagram className="w-4 h-4" /> INSTAGRAM</a>
           </div>
         </div>
       </div>

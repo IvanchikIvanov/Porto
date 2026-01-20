@@ -10,7 +10,7 @@ import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 const WireframeGeometry: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [themeIndex, setThemeIndex] = useState(1);
+    const [themeIndex, setThemeIndex] = useState(0);
     const [isStar, setIsStar] = useState(false);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const WireframeGeometry: React.FC = () => {
         };
 
         const colorPalettes = [
-            [new THREE.Color(0x4F46E5), new THREE.Color(0x7C3AED), new THREE.Color(0xC026D3), new THREE.Color(0xDB2777)],
+            [new THREE.Color(0x22d3ee), new THREE.Color(0x3b82f6), new THREE.Color(0x9333ea), new THREE.Color(0x7e22ce)],
             [new THREE.Color(0xF59E0B), new THREE.Color(0xF97316), new THREE.Color(0xDC2626), new THREE.Color(0x7F1D1D)],
             [new THREE.Color(0x10B981), new THREE.Color(0xA3E635), new THREE.Color(0xFACC15), new THREE.Color(0xFB923C)]
         ];
@@ -329,7 +329,7 @@ const WireframeGeometry: React.FC = () => {
                             className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${themeIndex === idx ? 'border-white scale-110' : 'border-transparent'
                                 }`}
                             style={{
-                                background: idx === 0 ? 'linear-gradient(45deg, #4F46E5, #DB2777)' :
+                                background: idx === 0 ? 'linear-gradient(45deg, #22d3ee, #9333ea)' :
                                     idx === 1 ? 'linear-gradient(45deg, #F59E0B, #DC2626)' :
                                         'linear-gradient(45deg, #10B981, #FB923C)'
                             }}

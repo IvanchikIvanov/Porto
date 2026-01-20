@@ -17,8 +17,8 @@ const Hero: React.FC = () => {
 
       {/* Background gradient effect */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-cyber-green/20 rounded-full blur-3xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-cyber-green/5 via-transparent to-transparent"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-cyber-primary/20 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyber-primary/5 via-transparent to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
 
           <div className="space-y-8">
             <div className="space-y-2 font-mono">
-              <p className="text-cyber-green text-sm typing-effect overflow-hidden whitespace-nowrap border-r-2 border-cyber-green w-fit pr-1 animate-pulse">
+              <p className="text-cyber-primary text-sm typing-effect overflow-hidden whitespace-nowrap border-r-2 border-cyber-primary w-fit pr-1 animate-pulse">
                 root@siteberry:~$ {t('hero.cmd')}
               </p>
               <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none">
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
                 <span className="text-neutral-500">{t('hero.reality')}</span><br />
                 <DecodingText
                   text={t('hero.architects')}
-                  className="text-cyber-green"
+                  className="text-cyber-primary"
                   scrambleClassName="text-white"
                   startDelay={1500}
                 />
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
 
               <a
                 href="#services"
-                className="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-neutral-800 text-neutral-400 font-mono tracking-wider hover:border-cyber-green hover:text-cyber-green transition-all bg-black/50 hover:bg-black/80"
+                className="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-neutral-800 text-neutral-400 font-mono tracking-wider hover:border-cyber-primary hover:text-cyber-primary transition-all bg-black/50 hover:bg-black/80"
               >
                 <span>{t('hero.btn_docs')}</span>
               </a>

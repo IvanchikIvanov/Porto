@@ -26,11 +26,11 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="p-1 border border-cyber-green rounded-sm group-hover:bg-cyber-green-dim transition-colors">
-              <Terminal className="w-5 h-5 text-cyber-green" />
+            <div className="p-1 border border-cyber-primary rounded-sm group-hover:bg-cyber-primary-dim transition-colors">
+              <Terminal className="w-5 h-5 text-cyber-primary" />
             </div>
             <span className="text-white font-bold tracking-tight">
-              SITEBERRY<span className="text-cyber-green">.PRO</span>
+              SITEBERRY<span className="text-cyber-primary">.PRO</span>
             </span>
           </div>
 
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
               <span>{t('nav.core')}</span>
             </div>
             <div className="w-[1px] h-4 bg-neutral-800"></div>
-            <span className="text-cyber-green">{time}</span>
+            <span className="text-cyber-primary">{time}</span>
           </div>
 
           {/* Desktop Navigation & Controls */}
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-neutral-400 hover:text-cyber-green transition-colors text-sm uppercase tracking-wider hover:underline decoration-cyber-green decoration-2 underline-offset-4"
+                  className="text-neutral-400 hover:text-cyber-primary transition-colors text-sm uppercase tracking-wider hover:underline decoration-cyber-primary decoration-2 underline-offset-4"
                 >
                   {item.name}
                 </a>
@@ -64,13 +64,13 @@ const Navbar: React.FC = () => {
 
             <div className="flex items-center gap-3 border-l border-neutral-800 pl-6">
               {/* Social Links */}
-              <a href="https://github.com/IvanchikIvanov" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all" title="GitHub">
+              <a href="https://github.com/IvanchikIvanov" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-primary transition-all" title="GitHub">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://t.me/We7drr" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all" title="Telegram">
+              <a href="https://t.me/We7drr" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-primary transition-all" title="Telegram">
                 <Send className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/aleksandr77698/" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all" title="Instagram">
+              <a href="https://www.instagram.com/aleksandr77698/" target="_blank" rel="noopener noreferrer" className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-primary transition-all" title="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
 
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all"
+                className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-primary transition-all"
                 title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
               >
                 {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
               {/* Language Toggle */}
               <button
                 onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}
-                className="flex items-center gap-2 p-1.5 px-3 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all font-bold text-sm"
+                className="flex items-center gap-2 p-1.5 px-3 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-primary transition-all font-bold text-sm"
                 title="Switch Language"
               >
                 <Globe className="w-4 h-4" />
@@ -97,11 +97,10 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile Controls */}
           <div className="md:hidden flex items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all"
+              className="p-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-primary transition-all"
               title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -109,7 +108,7 @@ const Navbar: React.FC = () => {
 
             <button
               onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}
-              className="flex items-center gap-1.5 p-1.5 px-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-green transition-all font-bold text-sm"
+              className="flex items-center gap-1.5 p-1.5 px-2 rounded hover:bg-[var(--btn-hover)] text-neutral-400 hover:text-cyber-primary transition-all font-bold text-sm"
               title="Switch Language"
             >
               <Globe className="w-4 h-4" />
@@ -134,7 +133,7 @@ const Navbar: React.FC = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-neutral-300 hover:text-cyber-green hover:bg-neutral-900 block px-3 py-2 text-base font-medium font-mono"
+                className="text-neutral-300 hover:text-cyber-primary hover:bg-neutral-900 block px-3 py-2 text-base font-medium font-mono"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

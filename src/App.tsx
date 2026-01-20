@@ -11,7 +11,7 @@ import InteractiveCursor from './components/ui/InteractiveCursor';
 
 function App() {
   return (
-    <div className="min-h-screen bg-cyber-black text-white selection:bg-cyber-green selection:text-black">
+    <div className="min-h-screen bg-cyber-black text-white selection:bg-cyber-primary selection:text-black">
 
 
       {/* Scanline overlay */}

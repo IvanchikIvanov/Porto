@@ -79,7 +79,7 @@ const ProjectLog: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-white font-mono mb-4">
-            <span className="text-cyber-green">$</span> <DecodingText text={language === 'ru' ? "cat ./expertise.md" : "cat ./expertise.md"} />
+            <span className="text-cyber-primary">$</span> <DecodingText text={language === 'ru' ? "cat ./expertise.md" : "cat ./expertise.md"} />
           </h2>
           <p className="text-neutral-400 font-mono max-w-2xl mx-auto">
             {language === 'ru'
@@ -90,12 +90,12 @@ const ProjectLog: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {expertiseBlocks.map((block, index) => (
-            <article key={index} className="p-6 bg-neutral-900/30 border border-neutral-800 hover:border-cyber-green/30 transition-all group">
+            <article key={index} className="p-6 bg-neutral-900/30 border border-neutral-800 hover:border-cyber-primary/30 transition-all group">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-cyber-green/10 text-cyber-green border border-cyber-green/20 rounded">
+                <div className="p-2 bg-cyber-primary/10 text-cyber-primary border border-cyber-primary/20 rounded">
                   {block.icon}
                 </div>
-                <h3 className="text-white font-bold font-mono group-hover:text-cyber-green transition-colors">
+                <h3 className="text-white font-bold font-mono group-hover:text-cyber-primary transition-colors">
                   {block.title}
                 </h3>
               </div>
@@ -109,24 +109,24 @@ const ProjectLog: React.FC = () => {
         {/* Extra SEO text block */}
         <div className="mt-16 p-8 bg-neutral-900/50 border border-neutral-800 rounded-lg">
           <h3 className="text-xl font-bold text-white font-mono mb-4 flex items-center gap-2">
-            <Zap className="w-5 h-5 text-cyber-green" />
+            <Zap className="w-5 h-5 text-cyber-primary" />
             {language === 'ru' ? "Почему выбирают Siteberry?" : "Why Choose Siteberry?"}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-neutral-400">
             <div className="flex items-start gap-3">
-              <Shield className="w-5 h-5 text-cyber-green flex-shrink-0 mt-1" />
+              <Shield className="w-5 h-5 text-cyber-primary flex-shrink-0 mt-1" />
               <p>{language === 'ru'
                 ? "100% чистый код без legacy-багажа. Мы пишем масштабируемые системы с первого дня."
                 : "100% clean code with no legacy baggage. We write scalable systems from day one."}</p>
             </div>
             <div className="flex items-start gap-3">
-              <Globe className="w-5 h-5 text-cyber-green flex-shrink-0 mt-1" />
+              <Globe className="w-5 h-5 text-cyber-primary flex-shrink-0 mt-1" />
               <p>{language === 'ru'
                 ? "Работаем глобально, remote-first подход. Клиенты из России, Европы, США и Азии."
                 : "Working globally with a remote-first approach. Clients from Russia, Europe, USA, and Asia."}</p>
             </div>
             <div className="flex items-start gap-3">
-              <Zap className="w-5 h-5 text-cyber-green flex-shrink-0 mt-1" />
+              <Zap className="w-5 h-5 text-cyber-primary flex-shrink-0 mt-1" />
               <p>{language === 'ru'
                 ? "High-performance deployment: 99.9% uptime, CDN-доставка, оптимизация под Core Web Vitals."
                 : "High-performance deployment: 99.9% uptime, CDN delivery, Core Web Vitals optimization."}</p>
