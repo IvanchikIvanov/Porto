@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import webGLFluidEnhanced from 'webgl-fluid-enhanced';
+import WebGLFluidEnhanced from 'webgl-fluid-enhanced';
 
 interface FluidArtProps {
     className?: string;
@@ -14,55 +14,48 @@ const FluidArt: React.FC<FluidArtProps> = ({
     dissipation = 0.97,
     colorScale = 1.0
 }) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!canvasRef.current) return;
+        if (!containerRef.current) return;
 
-        webGLFluidEnhanced.simulation(canvasRef.current, {
-            SIM_RESOLUTION: 128,
-            DYE_RESOLUTION: 512,
-            DENSITY_DISSIPATION: dissipation,
-            VELOCITY_DISSIPATION: 0.98,
-            PRESSURE: 0.8,
-            CURL: 30,
-            SPLAT_RADIUS: 0.2,
-            SPLAT_FORCE: 6000 * (sensitivity / 20),
-            SHADING: true,
-            COLORFUL: true,
-            COLOR_PALETTE: ['#22d3ee', '#9333ea', '#3b82f6', '#06b6d4', '#7e22ce'],
-            HOVER: true,
-            BLOOM: true,
-            BLOOM_ITERATIONS: 8,
-            BLOOM_RESOLUTION: 256,
-            BLOOM_INTENSITY: 1.2,
-            BLOOM_THRESHOLD: 0.4,
-            BLOOM_SOFT_KNEE: 0.7,
-            SUNRAYS: false,
-            PAUSED: false,
-            BACK_COLOR: { r: 0, g: 0, b: 0 },
-            TRANSPARENT: true,
+        // Correct usage for webgl-fluid-enhanced v0.8.0+
+        const fluid = new WebGLFluidEnhanced(containerRef.current);
+
+        fluid.setConfig({
+            simResolution: 128,
+            dyeResolution: 512,
+            densityDissipation: dissipation,
+            velocityDissipation: 0.98,
+            pressure: 0.8,
+            curl: 30,
+            splatRadius: 0.2,
+            splatForce: 6000 * (sensitivity / 20),
+            shading: true,
+            colorful: true,
+            colorPalette: ['#22d3ee', '#9333ea', '#3b82f6', '#06b6d4', '#7e22ce'],
+            hover: true,
+            bloom: true,
+            bloomIterations: 8,
+            bloomResolution: 256,
+            bloomIntensity: 1.2,
+            bloomThreshold: 0.4,
+            bloomSoftKnee: 0.7,
+            sunrays: false,
+            transparent: true,
+            brightness: colorScale * 0.5
         });
 
-        // The library manages its own events, but we should handle resizing
-        const handleResize = () => {
-            if (canvasRef.current) {
-                canvasRef.current.width = canvasRef.current.clientWidth;
-                canvasRef.current.height = canvasRef.current.clientHeight;
-            }
-        };
+        fluid.start();
 
-        window.addEventListener('resize', handleResize);
         return () => {
-            window.removeEventListener('resize', handleResize);
-            // Note: webgl-fluid-enhanced doesn't always expose a cleanup, 
-            // but the internal listeners are usually attached to the canvas.
+            fluid.stop();
         };
     }, [sensitivity, dissipation, colorScale]);
 
     return (
-        <canvas
-            ref={canvasRef}
+        <div
+            ref={containerRef}
             className={`w-full h-full block cursor-crosshair ${className}`}
             style={{ touchAction: 'none' }}
         />
