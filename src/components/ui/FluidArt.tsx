@@ -9,7 +9,7 @@ interface FluidArtProps {
 
 const FluidArt: React.FC<FluidArtProps> = ({
     className,
-    sensitivity = 10,
+    sensitivity = 20,
     dissipation = 0.98,
     colorScale = 1.0
 }) => {
@@ -128,7 +128,7 @@ const FluidArt: React.FC<FluidArtProps> = ({
             uniform float dt;
             uniform float dissipation;
             void main () {
-                vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;
+                vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy;
                 gl_FragColor = dissipation * texture2D(uSource, coord);
             }
         `;
@@ -313,6 +313,7 @@ const FluidArt: React.FC<FluidArtProps> = ({
         canvas.addEventListener('mousedown', handlePointerDown);
         window.addEventListener('mouseup', handlePointerUp);
         canvas.addEventListener('touchstart', handlePointerMove);
+        canvas.addEventListener('touchmove', handlePointerMove);
         canvas.addEventListener('touchend', handlePointerUp);
 
         const splat = (target: DoubleFBO, x: number, y: number, dx: number, dy: number, color: number[]) => {
@@ -322,7 +323,7 @@ const FluidArt: React.FC<FluidArtProps> = ({
             gl.uniform1f(gl.getUniformLocation(programs.splat, 'aspectRatio'), canvas.width / canvas.height);
             gl.uniform2f(gl.getUniformLocation(programs.splat, 'point'), x, y);
             gl.uniform3f(gl.getUniformLocation(programs.splat, 'color'), color[0], color[1], color[2]);
-            gl.uniform1f(gl.getUniformLocation(programs.splat, 'radius'), 0.0005);
+            gl.uniform1f(gl.getUniformLocation(programs.splat, 'radius'), 0.002);
             blit(target.write.fbo, target.read.w, target.read.h);
             target.swap();
         };
@@ -473,6 +474,7 @@ const FluidArt: React.FC<FluidArtProps> = ({
             canvas.removeEventListener('mousedown', handlePointerDown);
             window.removeEventListener('mouseup', handlePointerUp);
             canvas.removeEventListener('touchstart', handlePointerMove);
+            canvas.removeEventListener('touchmove', handlePointerMove);
             canvas.removeEventListener('touchend', handlePointerUp);
             window.removeEventListener('resize', resize);
         };
