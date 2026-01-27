@@ -30,14 +30,13 @@ const Hero: React.FC = () => {
                 root@siteberry:~$ {t('hero.cmd')}
               </p>
               <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none">
-                <DecodingText text={t('hero.digital')} startDelay={500} /><br />
-                <span className="text-neutral-500">{t('hero.reality')}</span><br />
                 <DecodingText
                   text={t('hero.architects')}
                   className="text-cyber-primary"
                   scrambleClassName="text-white"
-                  startDelay={1500}
-                />
+                  startDelay={500}
+                /><br />
+                <span className="text-neutral-500">{t('hero.digital_reality')}</span>
               </h1>
             </div>
 
