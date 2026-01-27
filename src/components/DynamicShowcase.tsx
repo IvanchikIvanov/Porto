@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import FluidArt from './ui/FluidArt';
 import DecodingText from './ui/DecodingText';
+import { useApp } from '../context/AppContext';
 
 const DynamicShowcase: React.FC = () => {
+    const { t } = useApp();
     return (
         <section className="h-screen relative overflow-hidden bg-black border-y border-neutral-800">
             {/* Full-screen Fluid Canvas */}
@@ -26,31 +28,30 @@ const DynamicShowcase: React.FC = () => {
                 >
                     <div className="flex items-center justify-center gap-4 mb-6">
                         <span className="h-px w-12 bg-cyan-500"></span>
-                        <span className="text-cyan-500 font-mono text-sm tracking-[0.3em] uppercase">Interactive Experience</span>
+                        <span className="text-cyan-500 font-mono text-sm tracking-[0.3em] uppercase">{t('showcase.badge')}</span>
                         <span className="h-px w-12 bg-cyan-500"></span>
                     </div>
 
                     <h2 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
-                        CREATIVE <br />
+                        {t('showcase.title_1')} <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-                            SURFACE
+                            {t('showcase.title_2')}
                         </span>
                     </h2>
 
                     <p className="text-neutral-400 text-lg md:text-xl font-mono max-w-2xl mx-auto mb-12">
-                        Touch the void. A high-performance Navier-Stokes fluid solver running directly in your browser.
-                        Move your cursor to paint with light and gravity.
+                        {t('showcase.desc')}
                     </p>
 
                     <div className="flex flex-wrap justify-center gap-6">
                         <div className="px-6 py-3 border border-cyan-500/30 bg-cyan-500/5 text-cyan-400 rounded-full font-mono text-xs uppercase tracking-widest backdrop-blur-md">
-                            WebGL 2.0
+                            {t('showcase.webgl')}
                         </div>
                         <div className="px-6 py-3 border border-blue-500/30 bg-blue-500/5 text-blue-400 rounded-full font-mono text-xs uppercase tracking-widest backdrop-blur-md">
-                            60 FPS SIM
+                            {t('showcase.fps')}
                         </div>
                         <div className="px-6 py-3 border border-purple-500/30 bg-purple-500/5 text-purple-400 rounded-full font-mono text-xs uppercase tracking-widest backdrop-blur-md">
-                            BLOOM FX
+                            {t('showcase.bloom')}
                         </div>
                     </div>
                 </motion.div>
@@ -69,22 +70,22 @@ const DynamicShowcase: React.FC = () => {
                             className="w-1 h-3 bg-neutral-400 rounded-full"
                         />
                     </div>
-                    <span className="text-neutral-500 font-mono text-[10px] tracking-[0.5em] uppercase">Move to interact</span>
+                    <span className="text-neutral-500 font-mono text-[10px] tracking-[0.5em] uppercase">{t('showcase.move_to_interact')}</span>
                 </motion.div>
             </div>
 
             {/* Corner Accents */}
             <div className="absolute top-8 left-8 text-neutral-800 font-mono text-[10px] select-none">
-                0x42 / FLUID_BUFFER_ALPHA
+                {t('showcase.fluid_buffer')}
             </div>
             <div className="absolute top-8 right-8 text-neutral-800 font-mono text-[10px] select-none text-right">
-                STABLE_SOLVER_V2.1
+                {t('showcase.stable_solver')}
             </div>
             <div className="absolute bottom-8 left-8 text-neutral-800 font-mono text-[10px] select-none">
-                LATENCY: 1.4MS
+                {t('showcase.latency')}
             </div>
             <div className="absolute bottom-8 right-8 text-neutral-800 font-mono text-[10px] select-none text-right">
-                RE_DESIGN_2026
+                {t('showcase.redesign')}
             </div>
         </section>
     );

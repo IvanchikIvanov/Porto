@@ -8,7 +8,7 @@ import FluidArt from './ui/FluidArt';
 import { useApp } from '../context/AppContext';
 
 const Playground: React.FC = () => {
-    const { t } = useApp();
+    const { t, language } = useApp();
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Parallax effect
@@ -29,26 +29,26 @@ const Playground: React.FC = () => {
                     <div>
                         <div className="flex items-center gap-3 mb-4">
                             <span className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></span>
-                            <span className="text-yellow-500 font-mono text-sm tracking-widest">EXPERIMENTAL // R&D</span>
+                            <span className="text-yellow-500 font-mono text-sm tracking-widest">{t('playground.badge')}</span>
                         </div>
                         <h2 className="text-4xl md:text-6xl font-bold text-white font-mono leading-none">
-                            THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-600">LAB</span>
+                            {t('playground.title_1')} {t('playground.title_2') && <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-600">{t('playground.title_2')}</span>}
                         </h2>
                     </div>
 
                     <p className="text-neutral-400 font-mono max-w-md text-right">
-                        A collection of UI experiments, physics simulations, and interaction patterns not suitable for standard production.
+                        {t('playground.desc')}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     {/* Experiment 1: Magnetic Buttons */}
-                    <TerminalBox title="magnet_physics.ts" borderColor="yellow">
+                    <TerminalBox title={t('playground.magnet_title')} borderColor="yellow">
                         <div className="h-48 flex flex-col items-center justify-center gap-6 bg-neutral-900/50 rounded-lg p-4 mb-4">
                             <MagneticButton>
                                 <button className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-yellow-400 transition-colors">
-                                    HOVER ME
+                                    {language === 'ru' ? 'НАВЕДИ' : 'HOVER ME'}
                                 </button>
                             </MagneticButton>
                             <div className="flex gap-4">
@@ -66,18 +66,18 @@ const Playground: React.FC = () => {
                     </TerminalBox>
 
                     {/* Experiment 2: Glitch Effects (Visual) */}
-                    <TerminalBox title="visual_distortion.glsl" borderColor="gray">
+                    <TerminalBox title={t('playground.glitch_title')} borderColor="gray">
                         <div className="h-48 flex items-center justify-center bg-black overflow-hidden relative mb-4 rounded-lg group">
                             <div className="absolute inset-0 bg-neutral-900 group-hover:bg-neutral-800 transition-colors"></div>
 
                             <h3 className="text-4xl font-black text-white relative z-10 mix-blend-difference group-hover:skew-x-12 transition-transform duration-100">
-                                GLITCH
+                                {language === 'ru' ? 'ГЛИТЧ' : 'GLITCH'}
                             </h3>
                             <h3 className="text-4xl font-black text-red-500 absolute z-0 left-[calc(50%+2px)] opacity-0 group-hover:opacity-70 mix-blend-screen">
-                                GLITCH
+                                {language === 'ru' ? 'ГЛИТЧ' : 'GLITCH'}
                             </h3>
                             <h3 className="text-4xl font-black text-blue-500 absolute z-0 left-[calc(50%-2px)] opacity-0 group-hover:opacity-70 mix-blend-screen">
-                                GLITCH
+                                {language === 'ru' ? 'ГЛИТЧ' : 'GLITCH'}
                             </h3>
                         </div>
                         <div className="text-xs text-neutral-500 font-mono">
@@ -86,7 +86,7 @@ const Playground: React.FC = () => {
                     </TerminalBox>
 
                     {/* Experiment 3: Morphing Geometry */}
-                    <TerminalBox title="geometry_morph.ts" borderColor="gray">
+                    <TerminalBox title={t('playground.geometry_title')} borderColor="gray">
                         <div className="h-64 bg-black/40 rounded-lg overflow-hidden relative mb-4">
                             <WireframeGeometry />
                         </div>
@@ -96,11 +96,11 @@ const Playground: React.FC = () => {
                     </TerminalBox>
 
                     {/* Experiment 4: Ink Simulation */}
-                    <TerminalBox title="fluid_dynamics.glsl" borderColor="cyan">
+                    <TerminalBox title={t('playground.fluid_title')} borderColor="cyan">
                         <div className="h-64 bg-black rounded-lg overflow-hidden relative mb-4">
                             <FluidArt className="absolute inset-0" />
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <span className="text-cyan-500/30 font-mono text-sm uppercase tracking-widest">Move Surface</span>
+                                <span className="text-cyan-500/30 font-mono text-sm uppercase tracking-widest">{t('playground.fluid_hint')}</span>
                             </div>
                         </div>
                         <div className="text-xs text-neutral-500 font-mono">

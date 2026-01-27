@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Code, Layers } from 'lucide-react';
 import DecodingText from './DecodingText';
+import { useApp } from '../../context/AppContext';
 
 interface ProjectData {
     title: string;
@@ -21,6 +22,7 @@ interface CaseStudyModalProps {
 }
 
 const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, project }) => {
+    const { t, language } = useApp();
     if (!project) return null;
 
     return (
@@ -46,7 +48,7 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, projec
                             {/* Header */}
                             <div className="sticky top-0 bg-neutral-900/95 backdrop-blur z-10 border-b border-neutral-800 p-6 flex justify-between items-start">
                                 <div>
-                                    <div className="text-cyber-primary text-xs font-mono mb-2">CASE STUDY // {project.tech}</div>
+                                    <div className="text-cyber-primary text-xs font-mono mb-2">{t('works.case_study')} // {project.tech}</div>
                                     <h2 className="text-3xl font-bold text-white font-mono">
                                         <DecodingText text={project.title} />
                                     </h2>
@@ -63,7 +65,7 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, projec
                             <div className="p-6 space-y-8">
                                 {/* Hero Image (Placeholder) */}
                                 <div className="w-full h-64 bg-neutral-800 rounded-lg animate-pulse flex items-center justify-center text-neutral-600 font-mono">
-                                    [PROJECT PREVIEW IMAGE]
+                                    {t('works.project_preview')}
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -71,19 +73,19 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, projec
                                     <div className="md:col-span-2 space-y-6">
                                         <section>
                                             <h3 className="text-xl text-white font-bold mb-3 flex items-center gap-2">
-                                                <span className="text-cyber-primary">#</span> Challenge
+                                                <span className="text-cyber-primary">#</span> {t('works.challenge')}
                                             </h3>
                                             <p className="text-neutral-400 leading-relaxed">
-                                                {project.challenge || "Identification of core problems effectively translated into technical requirements. The main goal was to create a seamless user experience while maintaining high performance under load."}
+                                                {project.challenge || (language === 'ru' ? "Идентификация основных проблем, эффективно переведённых в технические требования. Главная цель — создать бесшовный пользовательский опыт при сохранении высокой производительности под нагрузкой." : "Identification of core problems effectively translated into technical requirements. The main goal was to create a seamless user experience while maintaining high performance under load.")}
                                             </p>
                                         </section>
 
                                         <section>
                                             <h3 className="text-xl text-white font-bold mb-3 flex items-center gap-2">
-                                                <span className="text-cyber-primary">#</span> Solution
+                                                <span className="text-cyber-primary">#</span> {t('works.solution')}
                                             </h3>
                                             <p className="text-neutral-400 leading-relaxed">
-                                                {project.solution || "Implemented a robust architecture using modern technologies. Optimized rendering paths and utilized caching strategies to ensure sub-100ms response times."}
+                                                {project.solution || (language === 'ru' ? "Реализована надёжная архитектура с использованием современных технологий. Оптимизированы пути рендеринга и применены стратегии кеширования для обеспечения времени отклика менее 100 мс." : "Implemented a robust architecture using modern technologies. Optimized rendering paths and utilized caching strategies to ensure sub-100ms response times.")}
                                             </p>
                                         </section>
                                     </div>
@@ -91,7 +93,7 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, projec
                                     {/* Right Column: Meta */}
                                     <div className="space-y-6">
                                         <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                                            <h4 className="text-sm text-neutral-500 uppercase tracking-wider mb-4 font-mono">Stack</h4>
+                                            <h4 className="text-sm text-neutral-500 uppercase tracking-wider mb-4 font-mono">{t('works.stack')}</h4>
                                             <div className="flex flex-wrap gap-2">
                                                 {project.tech.split(',').map((t, i) => (
                                                     <span key={i} className="px-2 py-1 bg-cyber-primary/20 text-cyber-primary text-xs rounded font-mono border border-cyber-primary/30">
@@ -107,7 +109,7 @@ const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ isOpen, onClose, projec
                                             rel="noopener noreferrer"
                                             className="block w-full py-3 bg-white text-black font-bold text-center hover:bg-cyber-primary hover:text-white transition-all uppercase tracking-widest font-mono"
                                         >
-                                            Visit Site <ExternalLink className="inline-block w-4 h-4 ml-2" />
+                                            {t('works.visit_site')} <ExternalLink className="inline-block w-4 h-4 ml-2" />
                                         </a>
                                     </div>
                                 </div>

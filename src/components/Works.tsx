@@ -55,7 +55,7 @@ const Works: React.FC = () => {
                       <div className="flex items-center gap-2">
                         <div className="flex items-center gap-1 text-xs text-neutral-500 bg-neutral-900 px-2 py-1 rounded border border-neutral-800 group-hover:text-white transition-colors">
                           <Eye className="w-3 h-3" />
-                          <span>View Case</span>
+                          <span>{t('works.view_case')}</span>
                         </div>
                         <div className="text-xs text-neutral-600 font-mono">Status: PROD</div>
                       </div>
@@ -87,30 +87,30 @@ const Works: React.FC = () => {
             <div className="bg-neutral-900/50 p-6 border border-neutral-800 rounded-lg backdrop-blur-sm">
               <h3 className="text-white font-bold mb-4 font-mono flex items-center gap-2">
                 <span className="w-2 h-2 bg-cyber-primary rounded-full animate-pulse"></span>
-                SYSTEM_STATUS
+                {t('works.system_status')}
               </h3>
               <div className="space-y-4 text-sm font-mono text-neutral-400">
                 <div className="flex justify-between border-b border-neutral-800 pb-2">
-                  <span>DEPLOYED_PROJECTS</span>
+                  <span>{t('works.deployed_projects')}</span>
                   <span className="text-white">12</span>
                 </div>
                 <div className="flex justify-between border-b border-neutral-800 pb-2">
-                  <span>AVG_PERFORMANCE</span>
+                  <span>{t('works.avg_performance')}</span>
                   <span className="text-green-400">99/100</span>
                 </div>
                 <div className="flex justify-between border-b border-neutral-800 pb-2">
-                  <span>SERVER_LOAD</span>
+                  <span>{t('works.server_load')}</span>
                   <span className="text-blue-400">42%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>LAST_COMMIT</span>
+                  <span>{t('works.last_commit')}</span>
                   <span className="text-white">TODAY</span>
                 </div>
               </div>
             </div>
 
             <div className="hidden lg:block">
-              <h3 className="text-neutral-500 font-mono text-sm mb-4 uppercase tracking-wider">Production Timeline</h3>
+              <h3 className="text-neutral-500 font-mono text-sm mb-4 uppercase tracking-wider">{t('works.production_timeline')}</h3>
               <div className="border-l-2 border-neutral-800 pl-6 space-y-8">
                 {Array.isArray(worksList) && worksList.map((work, index) => (
                   <div key={index} className="relative">

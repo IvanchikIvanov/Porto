@@ -17,7 +17,7 @@ export const translations = {
             cmd: "init_sequence.sh",
             digital: "DIGITAL",
             reality: "REALITY",
-            architects: "ARCHITECTS",
+            architects: "MASTERS",
             desc: "We engineer high-performance web systems, decentralized networks, and AI-driven ecosystems. No corporate fluff—just pure code, scalable architecture, and radical aesthetics.",
             btn_start: "./START_PROJECT",
             btn_docs: "read_docs.md",
@@ -121,6 +121,46 @@ export const translations = {
             contact: "CONTACT_US",
             rights: "ALL RIGHTS RESERVED",
             status: "SYSTEM STATUS: STABLE"
+        },
+        works: {
+            view_case: "View Case",
+            system_status: "SYSTEM_STATUS",
+            deployed_projects: "DEPLOYED_PROJECTS",
+            avg_performance: "AVG_PERFORMANCE",
+            server_load: "SERVER_LOAD",
+            last_commit: "LAST_COMMIT",
+            production_timeline: "Production Timeline",
+            case_study: "CASE STUDY",
+            challenge: "Challenge",
+            solution: "Solution",
+            stack: "Stack",
+            visit_site: "Visit Site",
+            project_preview: "[PROJECT PREVIEW IMAGE]"
+        },
+        showcase: {
+            badge: "Interactive Experience",
+            title_1: "CREATIVE",
+            title_2: "SURFACE",
+            desc: "Touch the void. A high-performance Navier-Stokes fluid solver running directly in your browser. Move your cursor to paint with light and gravity.",
+            webgl: "WebGL 2.0",
+            fps: "60 FPS SIM",
+            bloom: "BLOOM FX",
+            move_to_interact: "Move to interact",
+            fluid_buffer: "0x42 / FLUID_BUFFER_ALPHA",
+            stable_solver: "STABLE_SOLVER_V2.1",
+            latency: "LATENCY: 1.4MS",
+            redesign: "RE_DESIGN_2026"
+        },
+        playground: {
+            badge: "EXPERIMENTAL // R&D",
+            title_1: "THE",
+            title_2: "LAB",
+            desc: "A collection of UI experiments, physics simulations, and interaction patterns not suitable for standard production.",
+            magnet_title: "magnet_physics.ts",
+            glitch_title: "visual_distortion.glsl",
+            geometry_title: "geometry_morph.ts",
+            fluid_title: "fluid_dynamics.glsl",
+            fluid_hint: "Move Surface"
         }
     },
     ru: {
@@ -141,7 +181,7 @@ export const translations = {
             cmd: "init_sequence.sh",
             digital: "ЦИФРОВАЯ",
             reality: "РЕАЛЬНОСТЬ",
-            architects: "АРХИТЕКТОРЫ",
+            architects: "МАСТЕРА",
             desc: "Мы создаём high-performance веб-системы, децентрализованные сети и ИИ-экосистемы. Никакой корпоративной воды — только чистый код, масштабируемая архитектура и радикальная эстетика.",
             btn_start: "./ЗАПУСТИТЬ",
             btn_docs: "читай_док.md",
@@ -245,6 +285,46 @@ export const translations = {
             contact: "CONTACT_US",
             rights: "ВСЕ ПРАВА ЗАЩИЩЕНЫ",
             status: "СТАТУС СИСТЕМЫ: НОРМА"
+        },
+        works: {
+            view_case: "Смотреть кейс",
+            system_status: "СТАТУС_СИСТЕМЫ",
+            deployed_projects: "РАЗВЕРНУТО_ПРОЕКТОВ",
+            avg_performance: "СРЕД_ПРОИЗВОДИТЕЛЬНОСТЬ",
+            server_load: "НАГРУЗКА_СЕРВЕРА",
+            last_commit: "ПОСЛЕДНИЙ_КОММИТ",
+            production_timeline: "Временная шкала продакшена",
+            case_study: "КЕЙС",
+            challenge: "Задача",
+            solution: "Решение",
+            stack: "Стек",
+            visit_site: "Открыть сайт",
+            project_preview: "[ПРЕВЬЮ ПРОЕКТА]"
+        },
+        showcase: {
+            badge: "Интерактивный опыт",
+            title_1: "ТВОРЧЕСКАЯ",
+            title_2: "ПОВЕРХНОСТЬ",
+            desc: "Коснись пустоты. Высокопроизводительный решатель уравнений Навье-Стокса работает прямо в твоём браузере. Двигай курсором, чтобы рисовать светом и гравитацией.",
+            webgl: "WebGL 2.0",
+            fps: "60 FPS SIM",
+            bloom: "BLOOM FX",
+            move_to_interact: "Двигай для взаимодействия",
+            fluid_buffer: "0x42 / FLUID_BUFFER_ALPHA",
+            stable_solver: "STABLE_SOLVER_V2.1",
+            latency: "ЗАДЕРЖКА: 1.4МС",
+            redesign: "РЕДИЗАЙН_2026"
+        },
+        playground: {
+            badge: "ЭКСПЕРИМЕНТАЛЬНО // R&D",
+            title_1: "ЛАБОРАТОРИЯ",
+            title_2: "",
+            desc: "Коллекция UI-экспериментов, физических симуляций и паттернов взаимодействия, не подходящих для стандартного продакшена.",
+            magnet_title: "magnet_physics.ts",
+            glitch_title: "visual_distortion.glsl",
+            geometry_title: "geometry_morph.ts",
+            fluid_title: "fluid_dynamics.glsl",
+            fluid_hint: "Двигай поверхность"
         }
     }
 };
