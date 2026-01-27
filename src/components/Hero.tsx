@@ -17,8 +17,9 @@ const Hero: React.FC = () => {
 
       {/* Background gradient effect */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-cyber-primary/20 rounded-full blur-3xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-cyber-primary/5 via-transparent to-transparent"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-64 h-64 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -30,12 +31,13 @@ const Hero: React.FC = () => {
                 root@siteberry:~$ {t('hero.cmd')}
               </p>
               <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none">
-                <DecodingText
-                  text={t('hero.architects')}
-                  className="text-cyber-primary"
-                  scrambleClassName="text-white"
-                  startDelay={500}
-                /><br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
+                  <DecodingText
+                    text={t('hero.architects')}
+                    scrambleClassName="text-white"
+                    startDelay={500}
+                  />
+                </span><br />
                 <span className="text-neutral-500">{t('hero.digital_reality')}</span>
               </h1>
             </div>

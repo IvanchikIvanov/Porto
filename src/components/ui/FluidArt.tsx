@@ -33,7 +33,7 @@ const FluidArt: React.FC<FluidArtProps> = ({
             splatForce: 6000 * (sensitivity / 20),
             shading: true,
             colorful: true,
-            colorPalette: ['#22d3ee', '#9333ea', '#3b82f6', '#06b6d4', '#7e22ce'],
+            colorPalette: ['#00dfff', '#a000ff', '#007bff', '#00b8d4', '#8e00ce'],
             hover: true,
             bloom: true,
             bloomIterations: 8,

@@ -6,7 +6,6 @@ import Works from './components/Works';
 import ProjectLog from './components/ProjectLog';
 import ContactFooter from './components/ContactFooter';
 import Playground from './components/Playground';
-import DynamicShowcase from './components/DynamicShowcase';
 import InteractiveCursor from './components/ui/InteractiveCursor';
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
         <Hero />
         <Services />
         <Works />
-        <DynamicShowcase />
         <Playground />
         <ProjectLog />
       </main>

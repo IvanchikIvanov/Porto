@@ -329,7 +329,7 @@ const WireframeGeometry: React.FC = () => {
                             className={`w-6 h-6 rounded-full border-2 transition-transform hover:scale-110 ${themeIndex === idx ? 'border-white scale-110' : 'border-transparent'
                                 }`}
                             style={{
-                                background: idx === 0 ? 'linear-gradient(45deg, #22d3ee, #9333ea)' :
+                                background: idx === 0 ? 'linear-gradient(45deg, #00dfff, #a000ff)' :
                                     idx === 1 ? 'linear-gradient(45deg, #F59E0B, #DC2626)' :
                                         'linear-gradient(45deg, #10B981, #FB923C)'
                             }}

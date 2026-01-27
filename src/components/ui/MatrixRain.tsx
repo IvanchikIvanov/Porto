@@ -26,9 +26,9 @@ const MatrixRain: React.FC<Props> = ({ className = "" }) => {
         let columns = Math.floor(width / fontSize);
         let drops: number[] = [];
 
-        // Colors - Cyan palette
-        const primaryColor = '#22d3ee'; // Cyan
-        const primaryColorDim = 'rgba(34, 211, 238, 0.6)';
+        // Colors - Bright Cyan palette
+        const primaryColor = '#00dfff'; // Bright Cyan
+        const primaryColorDim = 'rgba(0, 223, 255, 0.6)';
 
         const initDrops = () => {
             columns = Math.floor(width / fontSize);
@@ -65,9 +65,9 @@ const MatrixRain: React.FC<Props> = ({ className = "" }) => {
                 // Create gradient effect based on position
                 const progress = (y / height);
 
-                // Cyan color scheme
+                // Bright Cyan color scheme
                 const alpha = Math.min(1, progress + 0.3);
-                ctx.fillStyle = `rgba(34, 211, 238, ${alpha * 0.8})`;
+                ctx.fillStyle = `rgba(0, 223, 255, ${alpha * 0.8})`;
 
                 // Draw head character brighter (white/light cyan)
                 if (drops[i] > 0 && drops[i] < height / fontSize) {

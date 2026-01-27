@@ -83,7 +83,7 @@ const ProjectLog: React.FC = () => {
           </h2>
           <p className="text-neutral-400 font-mono max-w-2xl mx-auto">
             {language === 'ru'
-              ? "Глубокая экспертиза в ключевых технологиях. Clean code, scalable architecture, no fluff — pure aesthetics."
+              ? "Глубокая экспертиза в ключевых технологиях. Чистый код, масштабируемая архитектура, без воды — чистая эстетика."
               : "Deep expertise in key technologies. Clean code, scalable architecture, no fluff — pure aesthetics."}
           </p>
         </div>

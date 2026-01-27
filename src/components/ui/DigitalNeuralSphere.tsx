@@ -57,9 +57,9 @@ const DigitalNeuralSphere: React.FC<Props> = ({
     let mouseX = width / 2;
     let mouseY = height / 2;
 
-    // Color scheme: Cyan (primary) to Purple (accent)
-    const primaryColor = { r: 34, g: 211, b: 238 }; // Cyan (#22d3ee)
-    const accentColor = { r: 147, g: 51, b: 234 }; // Purple (#9333ea)
+    // Color scheme: Bright Cyan (primary) to Bright Purple (accent)
+    const primaryColor = { r: 0, g: 223, b: 255 }; // Bright Cyan (#00dfff)
+    const accentColor = { r: 160, g: 0, b: 255 }; // Bright Purple (#a000ff)
 
     // Helper: Generate points on a sphere (Fibonacci Sphere algorithm for even distribution)
     const initNodes = () => {
