@@ -43,8 +43,11 @@ const ContactFooter: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between text-xs text-neutral-600 font-mono">
-          <div>
-            © 2025 SITEBERRY.PRO // {language === 'ru' ? 'ВСЕ ПРАВА ЗАЩИЩЕНЫ' : 'ALL RIGHTS RESERVED'}
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain" />
+            <span>
+              © 2025 SITEBERRY.PRO // {language === 'ru' ? 'ВСЕ ПРАВА ЗАЩИЩЕНЫ' : 'ALL RIGHTS RESERVED'}
+            </span>
           </div>
           <div className="flex gap-4 mt-4 md:mt-0">
             <a href="https://github.com/IvanchikIvanov" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyber-primary transition-colors"><Github className="w-4 h-4" /> GITHUB</a>
