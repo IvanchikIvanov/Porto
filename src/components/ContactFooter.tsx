@@ -44,7 +44,7 @@ const ContactFooter: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between text-xs text-neutral-600 font-mono">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain" />
+            <img src="/logo.png" alt="Logo" className="w-10 h-10 object-contain" />
             <span>
               © 2025 SITEBERRY.PRO // {language === 'ru' ? 'ВСЕ ПРАВА ЗАЩИЩЕНЫ' : 'ALL RIGHTS RESERVED'}
             </span>

@@ -26,9 +26,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="p-1 border border-cyber-primary rounded-sm group-hover:bg-cyber-primary-dim transition-colors">
-              <img src="/logo.png" alt="Logo" className="w-7 h-7 object-contain" />
-            </div>
+            <img src="/logo.png" alt="Logo" className="w-10 h-10 object-contain" />
             <span className="text-white font-bold tracking-tight">
               SITEBERRY<span className="text-cyber-primary">.PRO</span>
             </span>
